@@ -623,9 +623,9 @@
       </div>
     </div>
     <div class="nav-tabs">
-      <button class="tab-btn active" id="tabStudent" onclick="switchTab('student')">🎮 學生練習</button>
-      <button class="tab-btn" id="tabEditor" onclick="switchTab('editor')">✏️ 老師題庫編輯器</button>
-      <button class="tab-btn" id="tabTeacher" onclick="switchTab('teacher')">📊 成績紀錄</button>
+      <button type="button" class="tab-btn active" id="tabStudent" onclick="switchTab('student')">🎮 學生練習</button>
+      <button type="button" class="tab-btn" id="tabEditor" onclick="switchTab('editor')">✏️ 老師題庫編輯器</button>
+      <button type="button" class="tab-btn" id="tabTeacher" onclick="switchTab('teacher')">📊 成績紀錄</button>
     </div>
   </header>
 
@@ -639,7 +639,7 @@
           <div style="font-weight:800; color:var(--primary-dark); font-size:1rem;">📌 已載入老師指定作業題庫</div>
           <div style="font-size:0.86rem; color:#334155; margin-top:2px;" id="assignmentInfoText">題庫名稱：指定單字測驗</div>
         </div>
-        <button class="btn btn-secondary btn-sm" onclick="clearAssignmentLink()">切換其他題庫</button>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="clearAssignmentLink()">切換其他題庫</button>
       </div>
 
       <div class="section-title">👋 學生基本資料與測驗設定</div>
@@ -674,7 +674,7 @@
         <input type="url" id="webhookUrl" value="https://script.google.com/macros/s/AKfycbz5h7fLyVc49v0gHcUIGFHRPDQ4LJA37t4B3uL_M3T80Efrd3wwshOuvG3DC6vnHotUQg/exec" />
       </div>
 
-      <button class="btn btn-primary btn-full" onclick="startGame()" style="margin-top: 8px; font-size: 1.05rem; padding: 14px;">
+      <button type="button" class="btn btn-primary btn-full" onclick="startGame()" style="margin-top: 8px; font-size: 1.05rem; padding: 14px;">
         🚀 開始拼字挑戰
       </button>
     </div>
@@ -699,8 +699,8 @@
         <div class="chinese-meaning" id="meaningText">蘋果</div>
         <div class="word-hint" id="hintText">提示：一種常見的紅色水果</div>
         <div class="audio-controls">
-          <button class="audio-btn" onclick="speakCurrentWord(0.95)">🔊 正常發音</button>
-          <button class="audio-btn" onclick="speakCurrentWord(0.6)">🐢 慢速朗讀</button>
+          <button type="button" class="audio-btn" onclick="speakCurrentWord(0.95)">🔊 正常發音</button>
+          <button type="button" class="audio-btn" onclick="speakCurrentWord(0.6)">🐢 慢速朗讀</button>
         </div>
       </div>
 
@@ -711,10 +711,10 @@
       <div class="bank-container" id="bankContainer"></div>
 
       <div class="action-row">
-        <button class="btn btn-secondary" onclick="backspaceLetter()">⌫ 退格</button>
-        <button class="btn btn-secondary" onclick="clearCurrentInput()">🔄 清空重拼</button>
-        <button class="btn btn-warning" onclick="useHint()">💡 提示一字母 (-2分)</button>
-        <button class="btn btn-primary" id="submitWordBtn" onclick="checkAnswer()">✅ 確認送出</button>
+        <button type="button" class="btn btn-secondary" onclick="backspaceLetter()">⌫ 退格</button>
+        <button type="button" class="btn btn-secondary" onclick="clearCurrentInput()">🔄 清空重拼</button>
+        <button type="button" class="btn btn-warning" onclick="useHint()">💡 提示一字母 (-2分)</button>
+        <button type="button" class="btn btn-primary" id="submitWordBtn" onclick="checkAnswer()">✅ 確認送出</button>
       </div>
 
       <div class="feedback-banner hidden" id="feedbackBanner"></div>
@@ -740,16 +740,16 @@
       <div class="report-preview" id="reportPreview"></div>
 
       <div class="share-grid">
-        <button class="btn btn-success" id="btnSendWebhook" onclick="sendToWebhook()">☁️ 手動重新傳送至試算表</button>
-        <button class="btn btn-primary" onclick="copyReport()">📋 複製成績單 (貼給 LINE)</button>
-        <button class="btn btn-secondary" onclick="downloadSingleCSV()">📥 下載成績 CSV 檔</button>
+        <button type="button" class="btn btn-success" id="btnSendWebhook" onclick="sendToWebhook()">☁️ 手動重新傳送至試算表</button>
+        <button type="button" class="btn btn-primary" onclick="copyReport()">📋 複製成績單 (貼給 LINE)</button>
+        <button type="button" class="btn btn-secondary" onclick="downloadSingleCSV()">📥 下載成績 CSV 檔</button>
       </div>
 
       <div id="shareToast" class="status-toast hidden"></div>
 
       <div style="margin-top: 20px; display: flex; gap: 10px;">
-        <button class="btn btn-secondary btn-full" onclick="restartSameTopic()">🔁 再挑戰一次</button>
-        <button class="btn btn-secondary btn-full" onclick="backToSetup()">🏠 返回首頁設定</button>
+        <button type="button" class="btn btn-secondary btn-full" onclick="restartSameTopic()">🔁 再挑戰一次</button>
+        <button type="button" class="btn btn-secondary btn-full" onclick="backToSetup()">🏠 返回首頁設定</button>
       </div>
     </div>
   </div>
@@ -760,8 +760,8 @@
       <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:16px;">
         <div class="section-title" style="margin-bottom:0;">✏️ 老師可視化題庫編輯器</div>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
-          <button class="btn btn-secondary btn-sm" onclick="toggleBatchImport()">📋 批次貼上單字</button>
-          <button class="btn btn-secondary btn-sm" onclick="exportBankJSON()">📤 匯出題庫檔</button>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="toggleBatchImport()">📋 批次貼上單字</button>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="exportBankJSON()">📤 匯出題庫檔</button>
           <label class="btn btn-secondary btn-sm" style="margin:0; cursor:pointer;">
             📥 匯入題庫檔
             <input type="file" id="importBankFile" accept=".json,.csv,.txt" style="display:none;" onchange="importBankFile(event)" />
@@ -793,9 +793,9 @@
         </label>
         <textarea id="batchTextarea" placeholder="apple,蘋果,紅色水果&#10;elephant,大象,有長鼻子的動物&#10;dictionary,字典"></textarea>
         <div style="display:flex; gap:8px; margin-top:8px;">
-          <button class="btn btn-primary btn-sm" onclick="applyBatchImport(false)">➕ 附加到下方表格</button>
-          <button class="btn btn-warning btn-sm" onclick="applyBatchImport(true)">🔄 覆蓋下方表格</button>
-          <button class="btn btn-secondary btn-sm" onclick="toggleBatchImport()">取消</button>
+          <button type="button" class="btn btn-primary btn-sm" onclick="applyBatchImport(false)">➕ 附加到下方表格</button>
+          <button type="button" class="btn btn-warning btn-sm" onclick="applyBatchImport(true)">🔄 覆蓋下方表格</button>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="toggleBatchImport()">取消</button>
         </div>
       </div>
 
@@ -816,11 +816,11 @@
       </div>
 
       <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-top:12px;">
-        <button class="btn btn-secondary" onclick="addEditorRow()">➕ 新增一列單字</button>
+        <button type="button" class="btn btn-secondary" onclick="addEditorRow()">➕ 新增一列單字</button>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
-          <button class="btn btn-danger hidden" id="btnDeleteCustomBank" onclick="deleteCurrentCustomBank()">🗑️ 刪除此題庫</button>
-          <button class="btn btn-primary" onclick="saveEditorBank()">💾 儲存題庫</button>
-          <button class="btn btn-success" onclick="generateAssignmentLink()">🔗 產生學生作業連結</button>
+          <button type="button" class="btn btn-danger hidden" id="btnDeleteCustomBank" onclick="deleteCurrentCustomBank()">🗑️ 刪除此題庫</button>
+          <button type="button" class="btn btn-primary" onclick="saveEditorBank()">💾 儲存題庫</button>
+          <button type="button" class="btn btn-success" onclick="generateAssignmentLink()">🔗 產生學生作業連結</button>
         </div>
       </div>
 
@@ -832,7 +832,7 @@
         </p>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
           <input type="text" id="generatedShareUrl" readonly style="flex:1; min-width:220px; background:white; font-size:0.85rem;" />
-          <button class="btn btn-success" onclick="copyShareUrl()">📋 複製連結</button>
+          <button type="button" class="btn btn-success" onclick="copyShareUrl()">📋 複製連結</button>
         </div>
         <div id="copyLinkToast" style="font-size:0.85rem; font-weight:700; color:#166534; margin-top:8px;" class="hidden"></div>
       </div>
@@ -845,8 +845,8 @@
       <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:16px;">
         <div class="section-title" style="margin-bottom:0;">📊 本機裝置成績紀錄總表</div>
         <div style="display:flex; gap:8px;">
-          <button class="btn btn-success" onclick="exportAllCSV()">📥 匯出全部成績 (CSV)</button>
-          <button class="btn btn-danger" onclick="clearAllRecords()">🗑️ 清空紀錄</button>
+          <button type="button" class="btn btn-success" onclick="exportAllCSV()">📥 匯出全部成績 (CSV)</button>
+          <button type="button" class="btn btn-danger" onclick="clearAllRecords()">🗑️ 清空紀錄</button>
         </div>
       </div>
       <p style="font-size:0.85rem; color:var(--muted); margin-bottom:12px;">
@@ -927,8 +927,8 @@
   };
 
   // ==================== 遊戲與題庫狀態變數 ====================
-  let customBanks = {}; // 儲存在 localStorage 的老師自訂題庫
-  let sharedAssignmentBank = null; // 從網址參數 ?hw=... 解碼出來的作業題庫
+  let customBanks = {};
+  let sharedAssignmentBank = null;
   let currentWords = [];
   let currentTopicName = "";
   let currentIndex = 0;
@@ -943,10 +943,15 @@
   let latestResultData = null;
 
   // ==================== 音效合成器 (Web Audio API) ====================
-  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  let audioCtx = null;
 
   function playTone(freq, type = "sine", duration = 0.12, delay = 0) {
     try {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) audioCtx = new AudioContextClass();
+      }
+      if (!audioCtx) return;
       if (audioCtx.state === "suspended") audioCtx.resume();
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
@@ -973,17 +978,25 @@
   }
 
   // ==================== 初始化與網址作業解析 ====================
-  window.addEventListener("DOMContentLoaded", () => {
-    const savedClass = localStorage.getItem("sp_classSeat");
-    const savedName = localStorage.getItem("sp_studentName");
-    if (savedClass) document.getElementById("classSeat").value = savedClass;
-    if (savedName) document.getElementById("studentName").value = savedName;
+  function initApp() {
+    try {
+      const savedClass = localStorage.getItem("sp_classSeat");
+      const savedName = localStorage.getItem("sp_studentName");
+      if (savedClass) document.getElementById("classSeat").value = savedClass;
+      if (savedName) document.getElementById("studentName").value = savedName;
+    } catch (e) {}
 
     loadCustomBanksFromStorage();
     checkUrlAssignment();
     refreshAllTopicDropdowns();
     initEditorDefaultRows();
-  });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initApp);
+  } else {
+    initApp();
+  }
 
   function loadCustomBanksFromStorage() {
     try {
@@ -994,7 +1007,9 @@
   }
 
   function saveCustomBanksToStorage() {
-    localStorage.setItem("sp_custom_banks", JSON.stringify(customBanks));
+    try {
+      localStorage.setItem("sp_custom_banks", JSON.stringify(customBanks));
+    } catch (e) {}
   }
 
   // 解析老師分享連結中的 ?hw= Base64 資料
@@ -1019,7 +1034,7 @@
         if (sharedAssignmentBank.words.length > 0) {
           document.getElementById("assignmentBanner").classList.remove("hidden");
           document.getElementById("assignmentInfoText").textContent =
-            `題庫名稱：「${sharedAssignmentBank.name}」（共 ${sharedAssignmentBank.words.length} 題）`;
+            "題庫名稱：「" + sharedAssignmentBank.name + "」（共 " + sharedAssignmentBank.words.length + " 題）";
           document.getElementById("topicSelectGroup").classList.add("hidden");
         }
       }
@@ -1032,7 +1047,6 @@
     sharedAssignmentBank = null;
     document.getElementById("assignmentBanner").classList.add("hidden");
     document.getElementById("topicSelectGroup").classList.remove("hidden");
-    // 清除網址列參數
     if (window.history && window.history.replaceState) {
       window.history.replaceState({}, document.title, window.location.pathname);
     }
@@ -1051,7 +1065,7 @@
       customKeys.forEach(k => {
         const opt = document.createElement("option");
         opt.value = k;
-        opt.textContent = `${customBanks[k].name} (${customBanks[k].words.length}題)`;
+        opt.textContent = customBanks[k].name + " (" + customBanks[k].words.length + "題)";
         grpCustom.appendChild(opt);
       });
       studentSelect.appendChild(grpCustom);
@@ -1062,7 +1076,7 @@
     Object.keys(BUILTIN_WORD_BANKS).forEach(k => {
       const opt = document.createElement("option");
       opt.value = k;
-      opt.textContent = `${BUILTIN_WORD_BANKS[k].name} (${BUILTIN_WORD_BANKS[k].words.length}題)`;
+      opt.textContent = BUILTIN_WORD_BANKS[k].name + " (" + BUILTIN_WORD_BANKS[k].words.length + "題)";
       grpBuiltin.appendChild(opt);
     });
     studentSelect.appendChild(grpBuiltin);
@@ -1076,7 +1090,7 @@
     // 2. 更新編輯器下拉選單
     const editorSelect = document.getElementById("editorBankSelect");
     const prevEditorVal = editorSelect.value;
-    editorSelect.innerHTML = `<option value="__new__">➕ 建立全新自訂題庫...</option>`;
+    editorSelect.innerHTML = '<option value="__new__">➕ 建立全新自訂題庫...</option>';
 
     if (customKeys.length > 0) {
       const grp = document.createElement("optgroup");
@@ -1084,7 +1098,7 @@
       customKeys.forEach(k => {
         const opt = document.createElement("option");
         opt.value = k;
-        opt.textContent = `${customBanks[k].name} (${customBanks[k].words.length}題)`;
+        opt.textContent = customBanks[k].name + " (" + customBanks[k].words.length + "題)";
         grp.appendChild(opt);
       });
       editorSelect.appendChild(grp);
@@ -1095,7 +1109,7 @@
     Object.keys(BUILTIN_WORD_BANKS).forEach(k => {
       const opt = document.createElement("option");
       opt.value = k;
-      opt.textContent = `${BUILTIN_WORD_BANKS[k].name} (${BUILTIN_WORD_BANKS[k].words.length}題)`;
+      opt.textContent = BUILTIN_WORD_BANKS[k].name + " (" + BUILTIN_WORD_BANKS[k].words.length + "題)";
       grpRef.appendChild(opt);
     });
     editorSelect.appendChild(grpRef);
@@ -1128,15 +1142,14 @@
   function addEditorRow(word = "", meaning = "", hint = "") {
     const tbody = document.getElementById("editorRowsBody");
     const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td class="row-num" style="font-weight:700; color:var(--muted); text-align:center;"></td>
-      <td><input type="text" class="ed-word" placeholder="例：apple" value="${escapeHtml(word)}" /></td>
-      <td><input type="text" class="ed-meaning" placeholder="例：蘋果" value="${escapeHtml(meaning)}" /></td>
-      <td><input type="text" class="ed-hint" placeholder="選填，如：紅色水果" value="${escapeHtml(hint)}" /></td>
-      <td style="text-align:center;">
-        <button class="btn btn-danger btn-sm" onclick="removeEditorRow(this)" title="刪除此列">✕</button>
-      </td>
-    `;
+    tr.innerHTML =
+      '<td class="row-num" style="font-weight:700; color:var(--muted); text-align:center;"></td>' +
+      '<td><input type="text" class="ed-word" placeholder="例：apple" value="' + escapeHtml(word) + '" /></td>' +
+      '<td><input type="text" class="ed-meaning" placeholder="例：蘋果" value="' + escapeHtml(meaning) + '" /></td>' +
+      '<td><input type="text" class="ed-hint" placeholder="選填，如：紅色水果" value="' + escapeHtml(hint) + '" /></td>' +
+      '<td style="text-align:center;">' +
+      '<button type="button" class="btn btn-danger btn-sm" onclick="removeEditorRow(this)" title="刪除此列">✕</button>' +
+      '</td>';
     tbody.appendChild(tr);
     updateEditorRowNumbers();
   }
@@ -1241,15 +1254,14 @@
     document.getElementById("topicSelect").value = bankKey;
     document.getElementById("btnDeleteCustomBank").classList.remove("hidden");
 
-    alert(`✅ 題庫「${title}」（共 ${words.length} 題）已成功儲存！
-您現在可以直接切換到「學生練習」使用，或產生專屬作業連結傳給學生。`);
-    return { key: bankKey, name: title, words };
+    alert("✅ 題庫「" + title + "」（共 " + words.length + " 題）已成功儲存！\n您現在可以直接切換到「學生練習」使用，或產生專屬作業連結傳給學生。");
+    return { key: bankKey, name: title, words: words };
   }
 
   function deleteCurrentCustomBank() {
     const key = document.getElementById("editorBankSelect").value;
     if (!key.startsWith("custom_") || !customBanks[key]) return;
-    if (!confirm(`確定要刪除題庫「${customBanks[key].name}」嗎？`)) return;
+    if (!confirm("確定要刪除題庫「" + customBanks[key].name + "」嗎？")) return;
 
     delete customBanks[key];
     saveCustomBanksToStorage();
@@ -1270,9 +1282,8 @@
       return;
     }
 
-    const parsed = raw.split("
-").map(line => {
-      const parts = line.split(/[,，	]/).map(s => s.trim());
+    const parsed = raw.split(/\r?\n/).map(line => {
+      const parts = line.split(/[,，\t]/).map(s => s.trim());
       const w = (parts[0] || "").toLowerCase().replace(/[^a-z]/g, "");
       if (!w) return null;
       return {
@@ -1303,11 +1314,11 @@
       alert("目前表格內沒有單字可匯出！");
       return;
     }
-    const payload = JSON.stringify({ name: title, words }, null, 2);
+    const payload = JSON.stringify({ name: title, words: words }, null, 2);
     const blob = new Blob([payload], { type: "application/json;charset=utf-8;" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = `${title}.json`;
+    link.download = title + ".json";
     link.click();
   }
 
@@ -1326,7 +1337,6 @@
             data.words.forEach(w => addEditorRow(w.word, w.meaning, w.hint));
           }
         } else {
-          // 支援 CSV 或純文字匯入
           document.getElementById("batchTextarea").value = text;
           applyBatchImport(true);
         }
@@ -1352,7 +1362,7 @@
     const encoded = btoa(unescape(encodeURIComponent(jsonStr)));
 
     const baseUrl = window.location.origin + window.location.pathname;
-    const fullUrl = `${baseUrl}?hw=${encoded}`;
+    const fullUrl = baseUrl + "?hw=" + encoded;
 
     const shareBox = document.getElementById("shareLinkBox");
     const urlInput = document.getElementById("generatedShareUrl");
@@ -1380,8 +1390,10 @@
       return;
     }
 
-    localStorage.setItem("sp_classSeat", classSeat);
-    localStorage.setItem("sp_studentName", studentName);
+    try {
+      localStorage.setItem("sp_classSeat", classSeat);
+      localStorage.setItem("sp_studentName", studentName);
+    } catch (e) {}
 
     if (sharedAssignmentBank) {
       currentWords = shuffleArray([...sharedAssignmentBank.words]);
@@ -1427,14 +1439,14 @@
     const item = currentWords[currentIndex];
     const total = currentWords.length;
 
-    document.getElementById("progressText").textContent = `第 ${currentIndex + 1} / ${total} 題`;
-    document.getElementById("streakBadge").textContent = `🔥 連對 ${streak}`;
+    document.getElementById("progressText").textContent = "第 " + (currentIndex + 1) + " / " + total + " 題";
+    document.getElementById("streakBadge").textContent = "🔥 連對 " + streak;
     document.getElementById("liveScore").textContent = score;
-    document.getElementById("progressBar").style.width = `${(currentIndex / total) * 100}%`;
+    document.getElementById("progressBar").style.width = ((currentIndex / total) * 100) + "%";
 
     document.getElementById("meaningText").textContent = item.meaning;
-    const hintPrefix = item.hint ? `提示：${item.hint}（` : `提示：共 `;
-    document.getElementById("hintText").textContent = `${hintPrefix}${item.word.length} 個英文字母${item.hint ? "）" : ""}`;
+    const hintPrefix = item.hint ? ("提示：" + item.hint + "（") : "提示：共 ";
+    document.getElementById("hintText").textContent = hintPrefix + item.word.length + " 個英文字母" + (item.hint ? "）" : "");
 
     const fb = document.getElementById("feedbackBanner");
     fb.classList.add("hidden");
@@ -1480,6 +1492,7 @@
     bankEl.innerHTML = "";
     scrambledTiles.forEach((char, idx) => {
       const btn = document.createElement("button");
+      btn.type = "button";
       btn.className = "tile-btn";
       btn.textContent = char;
       btn.disabled = usedIndices.has(idx) || isQuestionLocked;
@@ -1494,7 +1507,7 @@
     if (currentGuess.length >= targetLen) return;
 
     playClickSound();
-    currentGuess.push({ char: scrambledTiles[tileIndex], tileIndex });
+    currentGuess.push({ char: scrambledTiles[tileIndex], tileIndex: tileIndex });
     renderSlotsAndBank();
   }
 
@@ -1591,21 +1604,21 @@
         score = 100;
       }
       document.getElementById("liveScore").textContent = score;
-      document.getElementById("streakBadge").textContent = `🔥 連對 ${streak}`;
+      document.getElementById("streakBadge").textContent = "🔥 連對 " + streak;
 
       slots.forEach(s => s.classList.add("correct"));
-      fb.textContent = `🎉 答對了！正確拼法：${item.word}`;
+      fb.textContent = "🎉 答對了！正確拼法：" + item.word;
       fb.style.background = "var(--success-bg)";
       fb.style.color = "#065f46";
       fb.classList.remove("hidden");
     } else {
       playErrorSound();
       streak = 0;
-      document.getElementById("streakBadge").textContent = `🔥 連對 0`;
-      wrongWordsList.push(`${item.word} (${item.meaning})`);
+      document.getElementById("streakBadge").textContent = "🔥 連對 0";
+      wrongWordsList.push(item.word + " (" + item.meaning + ")");
 
       slots.forEach(s => s.classList.add("wrong"));
-      fb.textContent = `❌ 拼錯囉！你的拼法：${userWord} ｜ 正確答案：${item.word}`;
+      fb.textContent = "❌ 拼錯囉！你的拼法：" + userWord + " ｜ 正確答案：" + item.word;
       fb.style.background = "var(--danger-bg)";
       fb.style.color = "#991b1b";
       fb.classList.remove("hidden");
@@ -1636,7 +1649,7 @@
     const now = new Date();
     const timestamp = now.toLocaleString("zh-TW", { hour12: false });
 
-    const rawSig = `${classSeat}|${studentName}|${score}|${correctCount}/${totalCount}|${now.getMinutes()}`;
+    const rawSig = classSeat + "|" + studentName + "|" + score + "|" + correctCount + "/" + totalCount + "|" + now.getMinutes();
     let hash = 0;
     for (let i = 0; i < rawSig.length; i++) {
       hash = ((hash << 5) - hash) + rawSig.charCodeAt(i);
@@ -1645,20 +1658,22 @@
     const verificationCode = "SP-" + Math.abs(hash).toString(36).toUpperCase().padStart(6, "0");
 
     latestResultData = {
-      timestamp,
-      classSeat,
-      studentName,
+      timestamp: timestamp,
+      classSeat: classSeat,
+      studentName: studentName,
       topic: currentTopicName,
-      score,
-      correctCount,
-      totalCount,
+      score: score,
+      correctCount: correctCount,
+      totalCount: totalCount,
       wrongWords: wrongWordsList.length > 0 ? wrongWordsList.join("、") : "無（全數通過）",
-      verificationCode
+      verificationCode: verificationCode
     };
 
-    const records = JSON.parse(localStorage.getItem("sp_teacher_records") || "[]");
-    records.unshift(latestResultData);
-    localStorage.setItem("sp_teacher_records", JSON.stringify(records));
+    try {
+      const records = JSON.parse(localStorage.getItem("sp_teacher_records") || "[]");
+      records.unshift(latestResultData);
+      localStorage.setItem("sp_teacher_records", JSON.stringify(records));
+    } catch (e) {}
 
     document.getElementById("finalScore").textContent = score;
     if (score >= 90) {
@@ -1672,16 +1687,15 @@
     }
 
     const reportText = [
-      `【英語單字拼字測驗成績單】`,
-      `提交時間：${latestResultData.timestamp}`,
-      `班級座號：${latestResultData.classSeat}`,
-      `學生姓名：${latestResultData.studentName}`,
-      `測驗題庫：${latestResultData.topic}`,
-      `測驗得分：${latestResultData.score} 分（答對 ${latestResultData.correctCount} / ${latestResultData.totalCount} 題）`,
-      `待加強單字：${latestResultData.wrongWords}`,
-      `防偽驗證碼：${latestResultData.verificationCode}`
-    ].join("
-");
+      "【英語單字拼字測驗成績單】",
+      "提交時間：" + latestResultData.timestamp,
+      "班級座號：" + latestResultData.classSeat,
+      "學生姓名：" + latestResultData.studentName,
+      "測驗題庫：" + latestResultData.topic,
+      "測驗得分：" + latestResultData.score + " 分（答對 " + latestResultData.correctCount + " / " + latestResultData.totalCount + " 題）",
+      "待加強單字：" + latestResultData.wrongWords,
+      "防偽驗證碼：" + latestResultData.verificationCode
+    ].join("\n");
 
     document.getElementById("reportPreview").textContent = reportText;
 
@@ -1762,14 +1776,13 @@
       latestResultData.totalCount,
       latestResultData.wrongWords,
       latestResultData.verificationCode
-    ].map(v => `"${String(v).replace(/"/g, '""')}"`).join(",");
+    ].map(v => '"' + String(v).replace(/"/g, '""') + '"').join(",");
 
-    const csvContent = "﻿" + headers.join(",") + "
-" + row;
+    const csvContent = "\uFEFF" + headers.join(",") + "\n" + row;
     const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = `拼字成績_${latestResultData.classSeat}_${latestResultData.studentName}.csv`;
+    link.download = "拼字成績_" + latestResultData.classSeat + "_" + latestResultData.studentName + ".csv";
     link.click();
   }
 
@@ -1786,27 +1799,33 @@
   // ==================== 老師成績紀錄後台 ====================
   function renderRecordsTable() {
     const tbody = document.getElementById("recordsTableBody");
-    const records = JSON.parse(localStorage.getItem("sp_teacher_records") || "[]");
+    let records = [];
+    try {
+      records = JSON.parse(localStorage.getItem("sp_teacher_records") || "[]");
+    } catch (e) {}
     if (records.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; color:var(--muted); padding:24px;">目前尚無測驗紀錄</td></tr>`;
+      tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; color:var(--muted); padding:24px;">目前尚無測驗紀錄</td></tr>';
       return;
     }
-    tbody.innerHTML = records.map(r => `
-      <tr>
-        <td>${r.timestamp}</td>
-        <td><strong>${r.classSeat}</strong></td>
-        <td>${r.studentName}</td>
-        <td>${r.topic}</td>
-        <td><span class="badge ${r.score >= 80 ? 'badge-success' : 'badge-warning'}">${r.score} 分</span></td>
-        <td>${r.correctCount}/${r.totalCount}</td>
-        <td>${r.wrongWords}</td>
-        <td style="font-family:monospace;">${r.verificationCode}</td>
-      </tr>
-    `).join("");
+    tbody.innerHTML = records.map(r =>
+      '<tr>' +
+      '<td>' + escapeHtml(r.timestamp) + '</td>' +
+      '<td><strong>' + escapeHtml(r.classSeat) + '</strong></td>' +
+      '<td>' + escapeHtml(r.studentName) + '</td>' +
+      '<td>' + escapeHtml(r.topic) + '</td>' +
+      '<td><span class="badge ' + (r.score >= 80 ? 'badge-success' : 'badge-warning') + '">' + r.score + ' 分</span></td>' +
+      '<td>' + r.correctCount + '/' + r.totalCount + '</td>' +
+      '<td>' + escapeHtml(r.wrongWords) + '</td>' +
+      '<td style="font-family:monospace;">' + escapeHtml(r.verificationCode) + '</td>' +
+      '</tr>'
+    ).join("");
   }
 
   function exportAllCSV() {
-    const records = JSON.parse(localStorage.getItem("sp_teacher_records") || "[]");
+    let records = [];
+    try {
+      records = JSON.parse(localStorage.getItem("sp_teacher_records") || "[]");
+    } catch (e) {}
     if (records.length === 0) {
       alert("目前沒有任何成績紀錄可匯出！");
       return;
@@ -1815,15 +1834,13 @@
     const rows = records.map(r => [
       r.timestamp, r.classSeat, r.studentName, r.topic, r.score,
       r.correctCount, r.totalCount, r.wrongWords, r.verificationCode
-    ].map(v => `"${String(v).replace(/"/g, '""')}"`).join(","));
+    ].map(v => '"' + String(v).replace(/"/g, '""') + '"').join(","));
 
-    const csvContent = "﻿" + headers.join(",") + "
-" + rows.join("
-");
+    const csvContent = "\uFEFF" + headers.join(",") + "\n" + rows.join("\n");
     const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = `全班英語拼字成績總表_${new Date().toISOString().slice(0,10)}.csv`;
+    link.download = "全班英語拼字成績總表_" + new Date().toISOString().slice(0,10) + ".csv";
     link.click();
   }
 
