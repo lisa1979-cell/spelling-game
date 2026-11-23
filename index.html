@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>英語單字拼字大挑戰 | 互動練習與老師題庫系統</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #3730a3;
+      --primary-light: #e0e7ff;
+      --secondary: #0ea5e9;
+      --success: #10b981;
+      --success-bg: #d1fae5;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --danger-bg: #fee2e2;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #eef2ff 0%, #f0f9ff 50%, #f8fafc 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 840px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--card);
+      padding: 14px 22px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 800;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+    }
+
+    .brand h1 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .brand p {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 8px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+      animation: fadeIn 0.35s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Form Elements */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px 13px;
+      border-radius: 11px;
+      border: 1.5px solid var(--border);
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background: #fff;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-light);
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 18px;
+      border-radius: 11px;
+      border: none;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn-sm {
+      padding: 6px 12px;
+      font-size: 0.84rem;
+      border-radius: 9px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #6366f1);
+      color: white;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    }
+
+    .btn-secondary {
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+    }
+
+    .btn-warning {
+      background: #fef3c7;
+      color: #b45309;
+      border: 1px solid #fde68a;
+    }
+
+    .btn-danger {
+      background: var(--danger-bg);
+      color: var(--danger);
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+    /* Visual Editor Table */
+    .editor-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 14px;
+    }
+
+    .editor-table th {
+      background: #f1f5f9;
+      padding: 10px;
+      font-size: 0.85rem;
+      color: #475569;
+      text-align: left;
+      border-bottom: 1.5px solid var(--border);
+    }
+
+    .editor-table td {
+      padding: 8px 6px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    .editor-table input {
+      padding: 8px 10px;
+      font-size: 0.9rem;
+    }
+
+    .share-link-box {
+      background: #f0fdf4;
+      border: 1.5px solid #86efac;
+      border-radius: 14px;
+      padding: 16px;
+      margin-top: 16px;
+    }
+
+    .assignment-banner {
+      background: linear-gradient(135deg, #eef2ff, #e0f2fe);
+      border: 1.5px solid #93c5fd;
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Game Screen */
+    .game-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .badge {
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .badge-primary { background: var(--primary-light); color: var(--primary-dark); }
+    .badge-success { background: var(--success-bg); color: #065f46; }
+    .badge-warning { background: #fef3c7; color: #92400e; }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 10px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      width: 0%;
+      transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .prompt-box {
+      text-align: center;
+      padding: 20px;
+      background: #f8fafc;
+      border-radius: 16px;
+      border: 1.5px dashed #cbd5e1;
+      margin-bottom: 24px;
+    }
+
+    .chinese-meaning {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .word-hint {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .audio-controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .audio-btn {
+      background: white;
+      border: 1.5px solid var(--primary);
+      color: var(--primary);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .audio-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Answer Slots */
+    .slots-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      min-height: 62px;
+      margin-bottom: 24px;
+      padding: 8px;
+    }
+
+    .letter-slot {
+      width: 46px;
+      height: 54px;
+      border-radius: 12px;
+      border: 2px solid #cbd5e1;
+      background: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .letter-slot.filled {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(79, 70, 229, 0.18);
+    }
+
+    .letter-slot.correct {
+      background: var(--success-bg);
+      border-color: var(--success);
+      color: #065f46;
+      animation: bounce 0.45s ease;
+    }
+
+    .letter-slot.wrong {
+      background: var(--danger-bg);
+      border-color: var(--danger);
+      color: #991b1b;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      70% { transform: translateY(-4px); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+
+    .shake {
+      animation: shake 0.4s ease;
+    }
+
+    /* Scrambled Letter Bank */
+    .bank-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+      min-height: 58px;
+    }
+
+    .tile-btn {
+      width: 48px;
+      height: 52px;
+      border-radius: 12px;
+      border: 1.5px solid #cbd5e1;
+      border-bottom-width: 4px;
+      background: white;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
+    }
+
+    .tile-btn:hover:not(:disabled) {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .tile-btn:disabled {
+      opacity: 0.25;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .action-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .feedback-banner {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    /* Result Screen */
+    .score-circle {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
+    }
+
+    .score-num {
+      font-size: 2.5rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .score-label {
+      font-size: 0.85rem;
+      opacity: 0.9;
+      margin-top: 4px;
+    }
+
+    .report-preview {
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.86rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      color: #334155;
+      margin-bottom: 18px;
+    }
+
+    .share-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .status-toast {
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    /* Teacher Dashboard Table */
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 12px;
+    }
+
+    table.records-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    table.records-table th, table.records-table td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    table.records-table th {
+      background: #f1f5f9;
+      font-weight: 700;
+      color: #475569;
+    }
+
+    .confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+<div class="app-container">
+  <header>
+    <div class="brand">
+      <div class="brand-icon">A</div>
+      <div>
+        <h1>英語單字拼字大挑戰</h1>
+        <p>互動語音拼字練習 &amp; 雲端成績回傳</p>
+      </div>
+    </div>
+    <div class="nav-tabs">
+      <button class="tab-btn active" id="tabStudent" onclick="switchTab('student')">🎮 學生練習</button>
+      <button class="tab-btn" id="tabEditor" onclick="switchTab('editor')">✏️ 老師題庫編輯器</button>
+      <button class="tab-btn" id="tabTeacher" onclick="switchTab('teacher')">📊 成績紀錄</button>
+    </div>
+  </header>
+
+  <!-- ==================== 1. 學生練習頁面 ==================== -->
+  <div id="studentSection">
+    <!-- 開始設定畫面 -->
+    <div class="card" id="setupCard">
+      <!-- 若透過老師專屬連結開啟，會顯示此提示横幅 -->
+      <div class="assignment-banner hidden" id="assignmentBanner">
+        <div>
+          <div style="font-weight:800; color:var(--primary-dark); font-size:1rem;">📌 已載入老師指定作業題庫</div>
+          <div style="font-size:0.86rem; color:#334155; margin-top:2px;" id="assignmentInfoText">題庫名稱：指定單字測驗</div>
+        </div>
+        <button class="btn btn-secondary btn-sm" onclick="clearAssignmentLink()">切換其他題庫</button>
+      </div>
+
+      <div class="section-title">👋 學生基本資料與測驗設定</div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label for="classSeat">班級座號 <span style="color:var(--danger)">*</span></label>
+          <input type="text" id="classSeat" placeholder="例如：302-15" required />
+        </div>
+        <div class="form-group">
+          <label for="studentName">學生姓名 <span style="color:var(--danger)">*</span></label>
+          <input type="text" id="studentName" placeholder="請輸入真實姓名" required />
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group" id="topicSelectGroup">
+          <label for="topicSelect">選擇單字題庫</label>
+          <select id="topicSelect"></select>
+        </div>
+        <div class="form-group">
+          <label for="accentSelect">語音發音口音</label>
+          <select id="accentSelect">
+            <option value="en-US">美式英語 (US English)</option>
+            <option value="en-GB">英式英語 (UK English)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 隱藏的老師接收設定（已內建您的 Google Apps Script Webhook 網址） -->
+      <div style="display: none;" aria-hidden="true">
+        <input type="url" id="webhookUrl" value="https://script.google.com/macros/s/AKfycbz5h7fLyVc49v0gHcUIGFHRPDQ4LJA37t4B3uL_M3T80Efrd3wwshOuvG3DC6vnHotUQg/exec" />
+      </div>
+
+      <button class="btn btn-primary btn-full" onclick="startGame()" style="margin-top: 8px; font-size: 1.05rem; padding: 14px;">
+        🚀 開始拼字挑戰
+      </button>
+    </div>
+
+    <!-- 遊戲作答畫面 -->
+    <div class="card hidden" id="gameCard">
+      <div class="game-header">
+        <div>
+          <span class="badge badge-primary" id="progressText">第 1 / 10 題</span>
+          <span class="badge badge-warning" id="streakBadge" style="margin-left:6px;">🔥 連對 0</span>
+        </div>
+        <div>
+          得分：<span id="liveScore" style="color:var(--primary); font-size:1.1rem;">0</span> 分
+        </div>
+      </div>
+
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressBar"></div>
+      </div>
+
+      <div class="prompt-box">
+        <div class="chinese-meaning" id="meaningText">蘋果</div>
+        <div class="word-hint" id="hintText">提示：一種常見的紅色水果</div>
+        <div class="audio-controls">
+          <button class="audio-btn" onclick="speakCurrentWord(0.95)">🔊 正常發音</button>
+          <button class="audio-btn" onclick="speakCurrentWord(0.6)">🐢 慢速朗讀</button>
+        </div>
+      </div>
+
+      <!-- 拼字空格區 -->
+      <div class="slots-container" id="slotsContainer"></div>
+
+      <!-- 打亂字母區 -->
+      <div class="bank-container" id="bankContainer"></div>
+
+      <div class="action-row">
+        <button class="btn btn-secondary" onclick="backspaceLetter()">⌫ 退格</button>
+        <button class="btn btn-secondary" onclick="clearCurrentInput()">🔄 清空重拼</button>
+        <button class="btn btn-warning" onclick="useHint()">💡 提示一字母 (-2分)</button>
+        <button class="btn btn-primary" id="submitWordBtn" onclick="checkAnswer()">✅ 確認送出</button>
+      </div>
+
+      <div class="feedback-banner hidden" id="feedbackBanner"></div>
+    </div>
+
+    <!-- 結算與成績回傳畫面 -->
+    <div class="card hidden" id="resultCard">
+      <div style="text-align: center; margin-bottom: 18px;">
+        <div class="score-circle">
+          <div class="score-num" id="finalScore">100</div>
+          <div class="score-label">總得分</div>
+        </div>
+        <h2 style="font-size: 1.4rem; margin-bottom: 4px;" id="resultHeadline">太棒了，挑戰完成！</h2>
+        <p style="color: var(--muted); font-size: 0.92rem;" id="resultSubtext">成績已自動儲存，系統正在同步回傳給老師</p>
+      </div>
+
+      <!-- 自動雲端同步狀態提示 -->
+      <div id="autoSyncBanner" class="status-toast" style="background: #e0f2fe; color: #0369a1; margin-bottom: 16px;">
+        ⏳ 正在將成績自動傳送至老師的 Google 試算表...
+      </div>
+
+      <div class="section-title">📋 成績單明細（含防偽驗證碼）</div>
+      <div class="report-preview" id="reportPreview"></div>
+
+      <div class="share-grid">
+        <button class="btn btn-success" id="btnSendWebhook" onclick="sendToWebhook()">☁️ 手動重新傳送至試算表</button>
+        <button class="btn btn-primary" onclick="copyReport()">📋 複製成績單 (貼給 LINE)</button>
+        <button class="btn btn-secondary" onclick="downloadSingleCSV()">📥 下載成績 CSV 檔</button>
+      </div>
+
+      <div id="shareToast" class="status-toast hidden"></div>
+
+      <div style="margin-top: 20px; display: flex; gap: 10px;">
+        <button class="btn btn-secondary btn-full" onclick="restartSameTopic()">🔁 再挑戰一次</button>
+        <button class="btn btn-secondary btn-full" onclick="backToSetup()">🏠 返回首頁設定</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 2. 老師可視化題庫編輯器 ==================== -->
+  <div id="editorSection" class="hidden">
+    <div class="card">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:16px;">
+        <div class="section-title" style="margin-bottom:0;">✏️ 老師可視化題庫編輯器</div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="btn btn-secondary btn-sm" onclick="toggleBatchImport()">📋 批次貼上單字</button>
+          <button class="btn btn-secondary btn-sm" onclick="exportBankJSON()">📤 匯出題庫檔</button>
+          <label class="btn btn-secondary btn-sm" style="margin:0; cursor:pointer;">
+            📥 匯入題庫檔
+            <input type="file" id="importBankFile" accept=".json,.csv,.txt" style="display:none;" onchange="importBankFile(event)" />
+          </label>
+        </div>
+      </div>
+
+      <p style="font-size:0.88rem; color:var(--muted); margin-bottom:16px;">
+        在此建立您的專屬單字表，儲存後會直接出現在首頁的「選擇單字題庫」選單中；您也可以點選<strong>「產生學生作業連結」</strong>，學生點開網址就會自動載入這份題庫！
+      </p>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label for="editorBankSelect">選擇要編輯的題庫</label>
+          <select id="editorBankSelect" onchange="loadBankIntoEditor()">
+            <option value="__new__">➕ 建立全新自訂題庫...</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="editorBankTitle">題庫名稱（會顯示在成績單與試算表）</label>
+          <input type="text" id="editorBankTitle" placeholder="例如：翰林版三上 Unit 2 單字" />
+        </div>
+      </div>
+
+      <!-- 批次貼上展開區 -->
+      <div id="batchImportBox" class="hidden" style="background:#f8fafc; padding:14px; border-radius:12px; border:1px solid var(--border); margin-bottom:16px;">
+        <label for="batchTextarea" style="display:block; margin-bottom:6px;">
+          快速批次匯入（每行一題，格式：<code>英文,中文,提示</code>，提示可省略）
+        </label>
+        <textarea id="batchTextarea" placeholder="apple,蘋果,紅色水果&#10;elephant,大象,有長鼻子的動物&#10;dictionary,字典"></textarea>
+        <div style="display:flex; gap:8px; margin-top:8px;">
+          <button class="btn btn-primary btn-sm" onclick="applyBatchImport(false)">➕ 附加到下方表格</button>
+          <button class="btn btn-warning btn-sm" onclick="applyBatchImport(true)">🔄 覆蓋下方表格</button>
+          <button class="btn btn-secondary btn-sm" onclick="toggleBatchImport()">取消</button>
+        </div>
+      </div>
+
+      <!-- 表格化單字編輯區 -->
+      <div class="table-wrap">
+        <table class="editor-table">
+          <thead>
+            <tr>
+              <th style="width:42px;">#</th>
+              <th style="width:28%;">英文單字 <span style="color:var(--danger)">*</span></th>
+              <th style="width:28%;">中文解釋 <span style="color:var(--danger)">*</span></th>
+              <th>提示說明（選填，留空自動顯示字母數）</th>
+              <th style="width:76px; text-align:center;">操作</th>
+            </tr>
+          </thead>
+          <tbody id="editorRowsBody"></tbody>
+        </table>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-top:12px;">
+        <button class="btn btn-secondary" onclick="addEditorRow()">➕ 新增一列單字</button>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="btn btn-danger hidden" id="btnDeleteCustomBank" onclick="deleteCurrentCustomBank()">🗑️ 刪除此題庫</button>
+          <button class="btn btn-primary" onclick="saveEditorBank()">💾 儲存題庫</button>
+          <button class="btn btn-success" onclick="generateAssignmentLink()">🔗 產生學生作業連結</button>
+        </div>
+      </div>
+
+      <!-- 專屬學生作業連結顯示區 -->
+      <div id="shareLinkBox" class="share-link-box hidden">
+        <div style="font-weight:800; color:#166534; margin-bottom:6px;">✅ 學生專屬作業連結已產生！</div>
+        <p style="font-size:0.85rem; color:#15803d; margin-bottom:10px;">
+          複製下方網址傳到班級 LINE 群組或 Google Classroom，學生點開就會<strong>自動鎖定這份題庫</strong>作答，完成後成績直接寫入您的 Google 試算表：
+        </p>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <input type="text" id="generatedShareUrl" readonly style="flex:1; min-width:220px; background:white; font-size:0.85rem;" />
+          <button class="btn btn-success" onclick="copyShareUrl()">📋 複製連結</button>
+        </div>
+        <div id="copyLinkToast" style="font-size:0.85rem; font-weight:700; color:#166534; margin-top:8px;" class="hidden"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 3. 老師成績紀錄後台 ==================== -->
+  <div id="teacherSection" class="hidden">
+    <div class="card">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:16px;">
+        <div class="section-title" style="margin-bottom:0;">📊 本機裝置成績紀錄總表</div>
+        <div style="display:flex; gap:8px;">
+          <button class="btn btn-success" onclick="exportAllCSV()">📥 匯出全部成績 (CSV)</button>
+          <button class="btn btn-danger" onclick="clearAllRecords()">🗑️ 清空紀錄</button>
+        </div>
+      </div>
+      <p style="font-size:0.85rem; color:var(--muted); margin-bottom:12px;">
+        此頁面會彙整在此瀏覽器上完成的所有學生測驗紀錄；同時每筆成績亦會自動寫入您設定的 Google 試算表。
+      </p>
+      <div class="table-wrap">
+        <table class="records-table">
+          <thead>
+            <tr>
+              <th>提交時間</th>
+              <th>班級座號</th>
+              <th>姓名</th>
+              <th>題庫</th>
+              <th>得分</th>
+              <th>答對</th>
+              <th>待加強單字</th>
+              <th>驗證碼</th>
+            </tr>
+          </thead>
+          <tbody id="recordsTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ==================== 內建預設 Webhook 網址 ====================
+  const DEFAULT_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbz5h7fLyVc49v0gHcUIGFHRPDQ4LJA37t4B3uL_M3T80Efrd3wwshOuvG3DC6vnHotUQg/exec";
+
+  // ==================== 內建預設題庫資料 ====================
+  const BUILTIN_WORD_BANKS = {
+    daily: {
+      name: "生活常用基礎單字",
+      words: [
+        { word: "breakfast", meaning: "早餐", hint: "早上起床吃的第一餐" },
+        { word: "umbrella", meaning: "雨傘", hint: "下雨天出門必備用品" },
+        { word: "hospital", meaning: "醫院", hint: "生病看醫生的地方" },
+        { word: "language", meaning: "語言", hint: "例如中文、英文、日文" },
+        { word: "calendar", meaning: "日曆 / 行事曆", hint: "用來查看日期與星期" },
+        { word: "exercise", meaning: "運動 / 練習", hint: "保持身體健康的活動" },
+        { word: "daughter", meaning: "女兒", hint: "父母的女性孩子" },
+        { word: "sandwich", meaning: "三明治", hint: "兩片吐司夾火腿生菜" },
+        { word: "tomorrow", meaning: "明天", hint: "今天的下一天" },
+        { word: "medicine", meaning: "藥物 / 醫學", hint: "感冒時吃的藥" }
+      ]
+    },
+    school: {
+      name: "校園與學科單字",
+      words: [
+        { word: "library", meaning: "圖書館", hint: "借閱書籍與安靜自習的地方" },
+        { word: "science", meaning: "科學 / 自然科", hint: "做實驗探究自然原理的科目" },
+        { word: "history", meaning: "歷史", hint: "研究過去發生事件與朝代的科目" },
+        { word: "notebook", meaning: "筆記本", hint: "上課用來抄寫重點的本子" },
+        { word: "homework", meaning: "回家作業", hint: "放學後需要完成的功課" },
+        { word: "question", meaning: "問題", hint: "有疑惑時舉手發問" },
+        { word: "classroom", meaning: "教室", hint: "學生每天上課的房間" },
+        { word: "dictionary", meaning: "字典", hint: "用來查詢單字意思與發音的工具書" },
+        { word: "schedule", meaning: "課表 / 時間表", hint: "記錄每天各節課安排的表格" },
+        { word: "knowledge", meaning: "知識", hint: "透過學習累積的學問" }
+      ]
+    },
+    nature: {
+      name: "自然與動物世界",
+      words: [
+        { word: "elephant", meaning: "大象", hint: "陸地上體型最大、有長鼻子的動物" },
+        { word: "mountain", meaning: "高山", hint: "海拔很高的地形" },
+        { word: "butterfly", meaning: "蝴蝶", hint: "由毛毛蟲蛻變而成的美麗昆蟲" },
+        { word: "sunshine", meaning: "陽光", hint: "晴天時太陽照耀的光芒" },
+        { word: "penguin", meaning: "企鵝", hint: "生活在南極、不會飛但很會游泳的鳥類" },
+        { word: "rainbow", meaning: "彩虹", hint: "雨過天晴時天空出現的七彩弧線" },
+        { word: "dolphin", meaning: "海豚", hint: "聰明友善的海洋哺乳動物" },
+        { word: "weather", meaning: "天氣", hint: "晴天、雨天或陰天的氣候狀況" },
+        { word: "squirrel", meaning: "松鼠", hint: "有著蓬鬆大尾巴、喜歡吃堅果的小動物" },
+        { word: "universe", meaning: "宇宙", hint: "包含所有星球與銀河的浩瀚空間" }
+      ]
+    }
+  };
+
+  // ==================== 遊戲與題庫狀態變數 ====================
+  let customBanks = {}; // 儲存在 localStorage 的老師自訂題庫
+  let sharedAssignmentBank = null; // 從網址參數 ?hw=... 解碼出來的作業題庫
+  let currentWords = [];
+  let currentTopicName = "";
+  let currentIndex = 0;
+  let score = 0;
+  let streak = 0;
+  let correctCount = 0;
+  let wrongWordsList = [];
+  let currentGuess = [];
+  let scrambledTiles = [];
+  let isQuestionLocked = false;
+  let hintUsedInCurrent = false;
+  let latestResultData = null;
+
+  // ==================== 音效合成器 (Web Audio API) ====================
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+  function playTone(freq, type = "sine", duration = 0.12, delay = 0) {
+    try {
+      if (audioCtx.state === "suspended") audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime + delay);
+      gain.gain.setValueAtTime(0.15, audioCtx.currentTime + delay);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + delay + duration);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(audioCtx.currentTime + delay);
+      osc.stop(audioCtx.currentTime + delay + duration);
+    } catch (e) {}
+  }
+
+  function playClickSound() { playTone(520, "triangle", 0.07); }
+  function playSuccessSound() {
+    playTone(523.25, "sine", 0.14, 0);
+    playTone(659.25, "sine", 0.14, 0.1);
+    playTone(783.99, "sine", 0.25, 0.2);
+  }
+  function playErrorSound() {
+    playTone(220, "sawtooth", 0.18, 0);
+    playTone(180, "sawtooth", 0.24, 0.14);
+  }
+
+  // ==================== 初始化與網址作業解析 ====================
+  window.addEventListener("DOMContentLoaded", () => {
+    const savedClass = localStorage.getItem("sp_classSeat");
+    const savedName = localStorage.getItem("sp_studentName");
+    if (savedClass) document.getElementById("classSeat").value = savedClass;
+    if (savedName) document.getElementById("studentName").value = savedName;
+
+    loadCustomBanksFromStorage();
+    checkUrlAssignment();
+    refreshAllTopicDropdowns();
+    initEditorDefaultRows();
+  });
+
+  function loadCustomBanksFromStorage() {
+    try {
+      customBanks = JSON.parse(localStorage.getItem("sp_custom_banks") || "{}");
+    } catch (e) {
+      customBanks = {};
+    }
+  }
+
+  function saveCustomBanksToStorage() {
+    localStorage.setItem("sp_custom_banks", JSON.stringify(customBanks));
+  }
+
+  // 解析老師分享連結中的 ?hw= Base64 資料
+  function checkUrlAssignment() {
+    const params = new URLSearchParams(window.location.search);
+    const hwParam = params.get("hw");
+    if (!hwParam) return;
+
+    try {
+      const jsonStr = decodeURIComponent(escape(atob(hwParam)));
+      const parsed = JSON.parse(jsonStr);
+      if (parsed && parsed.n && Array.isArray(parsed.w) && parsed.w.length > 0) {
+        sharedAssignmentBank = {
+          name: parsed.n,
+          words: parsed.w.map(item => ({
+            word: String(item[0] || "").toLowerCase().replace(/[^a-z]/g, ""),
+            meaning: String(item[1] || "請聽發音拼出單字"),
+            hint: String(item[2] || "")
+          })).filter(x => x.word.length > 0)
+        };
+
+        if (sharedAssignmentBank.words.length > 0) {
+          document.getElementById("assignmentBanner").classList.remove("hidden");
+          document.getElementById("assignmentInfoText").textContent =
+            `題庫名稱：「${sharedAssignmentBank.name}」（共 ${sharedAssignmentBank.words.length} 題）`;
+          document.getElementById("topicSelectGroup").classList.add("hidden");
+        }
+      }
+    } catch (e) {
+      console.warn("無法解析作業連結參數", e);
+    }
+  }
+
+  function clearAssignmentLink() {
+    sharedAssignmentBank = null;
+    document.getElementById("assignmentBanner").classList.add("hidden");
+    document.getElementById("topicSelectGroup").classList.remove("hidden");
+    // 清除網址列參數
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  }
+
+  function refreshAllTopicDropdowns() {
+    // 1. 更新學生首頁下拉選單
+    const studentSelect = document.getElementById("topicSelect");
+    const prevStudentVal = studentSelect.value;
+    studentSelect.innerHTML = "";
+
+    const customKeys = Object.keys(customBanks);
+    if (customKeys.length > 0) {
+      const grpCustom = document.createElement("optgroup");
+      grpCustom.label = "⭐ 老師自訂題庫";
+      customKeys.forEach(k => {
+        const opt = document.createElement("option");
+        opt.value = k;
+        opt.textContent = `${customBanks[k].name} (${customBanks[k].words.length}題)`;
+        grpCustom.appendChild(opt);
+      });
+      studentSelect.appendChild(grpCustom);
+    }
+
+    const grpBuiltin = document.createElement("optgroup");
+    grpBuiltin.label = "📚 系統內建題庫";
+    Object.keys(BUILTIN_WORD_BANKS).forEach(k => {
+      const opt = document.createElement("option");
+      opt.value = k;
+      opt.textContent = `${BUILTIN_WORD_BANKS[k].name} (${BUILTIN_WORD_BANKS[k].words.length}題)`;
+      grpBuiltin.appendChild(opt);
+    });
+    studentSelect.appendChild(grpBuiltin);
+
+    if (prevStudentVal && (customBanks[prevStudentVal] || BUILTIN_WORD_BANKS[prevStudentVal])) {
+      studentSelect.value = prevStudentVal;
+    } else if (customKeys.length > 0) {
+      studentSelect.value = customKeys[0];
+    }
+
+    // 2. 更新編輯器下拉選單
+    const editorSelect = document.getElementById("editorBankSelect");
+    const prevEditorVal = editorSelect.value;
+    editorSelect.innerHTML = `<option value="__new__">➕ 建立全新自訂題庫...</option>`;
+
+    if (customKeys.length > 0) {
+      const grp = document.createElement("optgroup");
+      grp.label = "已儲存的自訂題庫";
+      customKeys.forEach(k => {
+        const opt = document.createElement("option");
+        opt.value = k;
+        opt.textContent = `${customBanks[k].name} (${customBanks[k].words.length}題)`;
+        grp.appendChild(opt);
+      });
+      editorSelect.appendChild(grp);
+    }
+
+    const grpRef = document.createElement("optgroup");
+    grpRef.label = "系統內建題庫（可複製修改）";
+    Object.keys(BUILTIN_WORD_BANKS).forEach(k => {
+      const opt = document.createElement("option");
+      opt.value = k;
+      opt.textContent = `${BUILTIN_WORD_BANKS[k].name} (${BUILTIN_WORD_BANKS[k].words.length}題)`;
+      grpRef.appendChild(opt);
+    });
+    editorSelect.appendChild(grpRef);
+
+    if (prevEditorVal) editorSelect.value = prevEditorVal;
+  }
+
+  // ==================== 分頁切換 ====================
+  function switchTab(tab) {
+    document.getElementById("tabStudent").classList.toggle("active", tab === "student");
+    document.getElementById("tabEditor").classList.toggle("active", tab === "editor");
+    document.getElementById("tabTeacher").classList.toggle("active", tab === "teacher");
+
+    document.getElementById("studentSection").classList.toggle("hidden", tab !== "student");
+    document.getElementById("editorSection").classList.toggle("hidden", tab !== "editor");
+    document.getElementById("teacherSection").classList.toggle("hidden", tab !== "teacher");
+
+    if (tab === "teacher") renderRecordsTable();
+  }
+
+  // ==================== 老師可視化題庫編輯器邏輯 ====================
+  function initEditorDefaultRows() {
+    const tbody = document.getElementById("editorRowsBody");
+    tbody.innerHTML = "";
+    for (let i = 0; i < 5; i++) {
+      addEditorRow();
+    }
+  }
+
+  function addEditorRow(word = "", meaning = "", hint = "") {
+    const tbody = document.getElementById("editorRowsBody");
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td class="row-num" style="font-weight:700; color:var(--muted); text-align:center;"></td>
+      <td><input type="text" class="ed-word" placeholder="例：apple" value="${escapeHtml(word)}" /></td>
+      <td><input type="text" class="ed-meaning" placeholder="例：蘋果" value="${escapeHtml(meaning)}" /></td>
+      <td><input type="text" class="ed-hint" placeholder="選填，如：紅色水果" value="${escapeHtml(hint)}" /></td>
+      <td style="text-align:center;">
+        <button class="btn btn-danger btn-sm" onclick="removeEditorRow(this)" title="刪除此列">✕</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+    updateEditorRowNumbers();
+  }
+
+  function removeEditorRow(btn) {
+    const tbody = document.getElementById("editorRowsBody");
+    if (tbody.children.length <= 1) {
+      alert("題庫至少需要保留一列喔！");
+      return;
+    }
+    btn.closest("tr").remove();
+    updateEditorRowNumbers();
+  }
+
+  function updateEditorRowNumbers() {
+    const rows = document.querySelectorAll("#editorRowsBody tr");
+    rows.forEach((tr, idx) => {
+      tr.querySelector(".row-num").textContent = idx + 1;
+    });
+  }
+
+  function escapeHtml(str) {
+    return String(str || "")
+      .replace(/&/g, "&amp;")
+      .replace(/"/g, "&quot;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
+  function loadBankIntoEditor() {
+    const key = document.getElementById("editorBankSelect").value;
+    const titleInput = document.getElementById("editorBankTitle");
+    const delBtn = document.getElementById("btnDeleteCustomBank");
+    const tbody = document.getElementById("editorRowsBody");
+    document.getElementById("shareLinkBox").classList.add("hidden");
+
+    if (key === "__new__") {
+      titleInput.value = "";
+      delBtn.classList.add("hidden");
+      initEditorDefaultRows();
+      return;
+    }
+
+    if (customBanks[key]) {
+      titleInput.value = customBanks[key].name;
+      delBtn.classList.remove("hidden");
+      tbody.innerHTML = "";
+      customBanks[key].words.forEach(w => addEditorRow(w.word, w.meaning, w.hint));
+    } else if (BUILTIN_WORD_BANKS[key]) {
+      titleInput.value = BUILTIN_WORD_BANKS[key].name + " (自訂版)";
+      delBtn.classList.add("hidden");
+      tbody.innerHTML = "";
+      BUILTIN_WORD_BANKS[key].words.forEach(w => addEditorRow(w.word, w.meaning, w.hint));
+    }
+  }
+
+  function collectEditorWords() {
+    const rows = document.querySelectorAll("#editorRowsBody tr");
+    const list = [];
+    rows.forEach(tr => {
+      const rawWord = tr.querySelector(".ed-word").value.trim().toLowerCase().replace(/[^a-z]/g, "");
+      const meaning = tr.querySelector(".ed-meaning").value.trim();
+      const hint = tr.querySelector(".ed-hint").value.trim();
+      if (rawWord) {
+        list.push({
+          word: rawWord,
+          meaning: meaning || "請聽發音拼出單字",
+          hint: hint
+        });
+      }
+    });
+    return list;
+  }
+
+  function saveEditorBank() {
+    const title = document.getElementById("editorBankTitle").value.trim();
+    if (!title) {
+      alert("請先輸入「題庫名稱」（例如：三上 Unit 1 單字）！");
+      document.getElementById("editorBankTitle").focus();
+      return null;
+    }
+
+    const words = collectEditorWords();
+    if (words.length === 0) {
+      alert("請至少輸入一個有效的英文單字！");
+      return null;
+    }
+
+    const currentSelectVal = document.getElementById("editorBankSelect").value;
+    const bankKey = (currentSelectVal && currentSelectVal.startsWith("custom_"))
+      ? currentSelectVal
+      : "custom_" + Date.now();
+
+    customBanks[bankKey] = {
+      name: title,
+      words: words
+    };
+
+    saveCustomBanksToStorage();
+    refreshAllTopicDropdowns();
+    document.getElementById("editorBankSelect").value = bankKey;
+    document.getElementById("topicSelect").value = bankKey;
+    document.getElementById("btnDeleteCustomBank").classList.remove("hidden");
+
+    alert(`✅ 題庫「${title}」（共 ${words.length} 題）已成功儲存！
+您現在可以直接切換到「學生練習」使用，或產生專屬作業連結傳給學生。`);
+    return { key: bankKey, name: title, words };
+  }
+
+  function deleteCurrentCustomBank() {
+    const key = document.getElementById("editorBankSelect").value;
+    if (!key.startsWith("custom_") || !customBanks[key]) return;
+    if (!confirm(`確定要刪除題庫「${customBanks[key].name}」嗎？`)) return;
+
+    delete customBanks[key];
+    saveCustomBanksToStorage();
+    refreshAllTopicDropdowns();
+    document.getElementById("editorBankSelect").value = "__new__";
+    loadBankIntoEditor();
+  }
+
+  // 批次匯入功能
+  function toggleBatchImport() {
+    document.getElementById("batchImportBox").classList.toggle("hidden");
+  }
+
+  function applyBatchImport(replaceExisting) {
+    const raw = document.getElementById("batchTextarea").value.trim();
+    if (!raw) {
+      alert("請先貼上單字清單！");
+      return;
+    }
+
+    const parsed = raw.split("
+").map(line => {
+      const parts = line.split(/[,，	]/).map(s => s.trim());
+      const w = (parts[0] || "").toLowerCase().replace(/[^a-z]/g, "");
+      if (!w) return null;
+      return {
+        word: w,
+        meaning: parts[1] || "",
+        hint: parts[2] || ""
+      };
+    }).filter(Boolean);
+
+    if (parsed.length === 0) {
+      alert("無法解析單字，請確認每行開頭為英文字母！");
+      return;
+    }
+
+    if (replaceExisting) {
+      document.getElementById("editorRowsBody").innerHTML = "";
+    }
+    parsed.forEach(item => addEditorRow(item.word, item.meaning, item.hint));
+    document.getElementById("batchTextarea").value = "";
+    toggleBatchImport();
+  }
+
+  // 匯出 / 匯入題庫 JSON 檔
+  function exportBankJSON() {
+    const title = document.getElementById("editorBankTitle").value.trim() || "未命名英語題庫";
+    const words = collectEditorWords();
+    if (words.length === 0) {
+      alert("目前表格內沒有單字可匯出！");
+      return;
+    }
+    const payload = JSON.stringify({ name: title, words }, null, 2);
+    const blob = new Blob([payload], { type: "application/json;charset=utf-8;" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `${title}.json`;
+    link.click();
+  }
+
+  function importBankFile(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const text = e.target.result.trim();
+        if (text.startsWith("{")) {
+          const data = JSON.parse(text);
+          if (data.name) document.getElementById("editorBankTitle").value = data.name;
+          if (Array.isArray(data.words)) {
+            document.getElementById("editorRowsBody").innerHTML = "";
+            data.words.forEach(w => addEditorRow(w.word, w.meaning, w.hint));
+          }
+        } else {
+          // 支援 CSV 或純文字匯入
+          document.getElementById("batchTextarea").value = text;
+          applyBatchImport(true);
+        }
+        alert("✅ 題庫檔案已載入至編輯器，請記得點擊「儲存題庫」！");
+      } catch (err) {
+        alert("❌ 檔案格式無法讀取，請確認為正確的題庫檔。");
+      }
+      event.target.value = "";
+    };
+    reader.readAsText(file, "UTF-8");
+  }
+
+  // 產生一鍵學生作業連結
+  function generateAssignmentLink() {
+    const saved = saveEditorBank();
+    if (!saved) return;
+
+    const compactPayload = {
+      n: saved.name,
+      w: saved.words.map(item => [item.word, item.meaning, item.hint || ""])
+    };
+    const jsonStr = JSON.stringify(compactPayload);
+    const encoded = btoa(unescape(encodeURIComponent(jsonStr)));
+
+    const baseUrl = window.location.origin + window.location.pathname;
+    const fullUrl = `${baseUrl}?hw=${encoded}`;
+
+    const shareBox = document.getElementById("shareLinkBox");
+    const urlInput = document.getElementById("generatedShareUrl");
+    shareBox.classList.remove("hidden");
+    urlInput.value = fullUrl;
+  }
+
+  function copyShareUrl() {
+    const urlInput = document.getElementById("generatedShareUrl");
+    urlInput.select();
+    navigator.clipboard.writeText(urlInput.value).then(() => {
+      const toast = document.getElementById("copyLinkToast");
+      toast.textContent = "✅ 專屬作業連結已複製！可以直接貼給學生開啟作答。";
+      toast.classList.remove("hidden");
+    });
+  }
+
+  // ==================== 開始遊戲 ====================
+  function startGame() {
+    const classSeat = document.getElementById("classSeat").value.trim();
+    const studentName = document.getElementById("studentName").value.trim();
+
+    if (!classSeat || !studentName) {
+      alert("請先填寫「班級座號」與「學生姓名」，方便老師登記成績喔！");
+      return;
+    }
+
+    localStorage.setItem("sp_classSeat", classSeat);
+    localStorage.setItem("sp_studentName", studentName);
+
+    if (sharedAssignmentBank) {
+      currentWords = shuffleArray([...sharedAssignmentBank.words]);
+      currentTopicName = sharedAssignmentBank.name;
+    } else {
+      const topicKey = document.getElementById("topicSelect").value;
+      const bank = customBanks[topicKey] || BUILTIN_WORD_BANKS[topicKey];
+      if (!bank || !bank.words || bank.words.length === 0) {
+        alert("找不到可用的題庫，請先選擇或建立題庫！");
+        return;
+      }
+      currentWords = shuffleArray([...bank.words]);
+      currentTopicName = bank.name;
+    }
+
+    currentIndex = 0;
+    score = 0;
+    streak = 0;
+    correctCount = 0;
+    wrongWordsList = [];
+
+    document.getElementById("setupCard").classList.add("hidden");
+    document.getElementById("resultCard").classList.add("hidden");
+    document.getElementById("gameCard").classList.remove("hidden");
+
+    loadQuestion();
+  }
+
+  function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  // ==================== 載入題目與語音 ====================
+  function loadQuestion() {
+    isQuestionLocked = false;
+    hintUsedInCurrent = false;
+    currentGuess = [];
+
+    const item = currentWords[currentIndex];
+    const total = currentWords.length;
+
+    document.getElementById("progressText").textContent = `第 ${currentIndex + 1} / ${total} 題`;
+    document.getElementById("streakBadge").textContent = `🔥 連對 ${streak}`;
+    document.getElementById("liveScore").textContent = score;
+    document.getElementById("progressBar").style.width = `${(currentIndex / total) * 100}%`;
+
+    document.getElementById("meaningText").textContent = item.meaning;
+    const hintPrefix = item.hint ? `提示：${item.hint}（` : `提示：共 `;
+    document.getElementById("hintText").textContent = `${hintPrefix}${item.word.length} 個英文字母${item.hint ? "）" : ""}`;
+
+    const fb = document.getElementById("feedbackBanner");
+    fb.classList.add("hidden");
+    fb.className = "feedback-banner hidden";
+
+    scrambledTiles = shuffleArray(item.word.toLowerCase().split(""));
+    renderSlotsAndBank();
+
+    setTimeout(() => speakCurrentWord(0.95), 350);
+  }
+
+  function speakCurrentWord(rate = 0.95) {
+    if (!("speechSynthesis" in window)) return;
+    window.speechSynthesis.cancel();
+    const item = currentWords[currentIndex];
+    const utter = new SpeechSynthesisUtterance(item.word);
+    utter.lang = document.getElementById("accentSelect").value || "en-US";
+    utter.rate = rate;
+    window.speechSynthesis.speak(utter);
+  }
+
+  // ==================== 渲染空格與字母按鈕 ====================
+  function renderSlotsAndBank() {
+    const item = currentWords[currentIndex];
+    const slotsEl = document.getElementById("slotsContainer");
+    const bankEl = document.getElementById("bankContainer");
+
+    slotsEl.innerHTML = "";
+    for (let i = 0; i < item.word.length; i++) {
+      const slot = document.createElement("div");
+      slot.className = "letter-slot";
+      if (currentGuess[i]) {
+        slot.textContent = currentGuess[i].char;
+        slot.classList.add("filled");
+        slot.onclick = () => {
+          if (!isQuestionLocked) removeLetterAt(i);
+        };
+      }
+      slotsEl.appendChild(slot);
+    }
+
+    const usedIndices = new Set(currentGuess.map(g => g.tileIndex));
+    bankEl.innerHTML = "";
+    scrambledTiles.forEach((char, idx) => {
+      const btn = document.createElement("button");
+      btn.className = "tile-btn";
+      btn.textContent = char;
+      btn.disabled = usedIndices.has(idx) || isQuestionLocked;
+      btn.onclick = () => selectTile(idx);
+      bankEl.appendChild(btn);
+    });
+  }
+
+  function selectTile(tileIndex) {
+    if (isQuestionLocked) return;
+    const targetLen = currentWords[currentIndex].word.length;
+    if (currentGuess.length >= targetLen) return;
+
+    playClickSound();
+    currentGuess.push({ char: scrambledTiles[tileIndex], tileIndex });
+    renderSlotsAndBank();
+  }
+
+  function removeLetterAt(slotIndex) {
+    playClickSound();
+    currentGuess.splice(slotIndex, 1);
+    renderSlotsAndBank();
+  }
+
+  function backspaceLetter() {
+    if (isQuestionLocked || currentGuess.length === 0) return;
+    playClickSound();
+    currentGuess.pop();
+    renderSlotsAndBank();
+  }
+
+  function clearCurrentInput() {
+    if (isQuestionLocked) return;
+    playClickSound();
+    currentGuess = [];
+    renderSlotsAndBank();
+  }
+
+  function useHint() {
+    if (isQuestionLocked) return;
+    const targetWord = currentWords[currentIndex].word.toLowerCase();
+    let nextPos = 0;
+    while (nextPos < currentGuess.length && currentGuess[nextPos].char === targetWord[nextPos]) {
+      nextPos++;
+    }
+    if (nextPos >= targetWord.length) return;
+
+    currentGuess = currentGuess.slice(0, nextPos);
+    const neededChar = targetWord[nextPos];
+    const usedIndices = new Set(currentGuess.map(g => g.tileIndex));
+    const foundTileIdx = scrambledTiles.findIndex((c, idx) => c === neededChar && !usedIndices.has(idx));
+
+    if (foundTileIdx !== -1) {
+      playClickSound();
+      currentGuess.push({ char: neededChar, tileIndex: foundTileIdx });
+      if (!hintUsedInCurrent) {
+        score = Math.max(0, score - 2);
+        document.getElementById("liveScore").textContent = score;
+        hintUsedInCurrent = true;
+      }
+      renderSlotsAndBank();
+    }
+  }
+
+  // 支援實體鍵盤打字
+  document.addEventListener("keydown", (e) => {
+    if (document.getElementById("studentSection").classList.contains("hidden")) return;
+    if (document.getElementById("gameCard").classList.contains("hidden") || isQuestionLocked) return;
+    if (e.key === "Backspace") {
+      e.preventDefault();
+      backspaceLetter();
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      checkAnswer();
+    } else if (/^[a-zA-Z]$/.test(e.key)) {
+      const ch = e.key.toLowerCase();
+      const usedIndices = new Set(currentGuess.map(g => g.tileIndex));
+      const idx = scrambledTiles.findIndex((c, i) => c === ch && !usedIndices.has(i));
+      if (idx !== -1) selectTile(idx);
+    }
+  });
+
+  // ==================== 檢查答案 ====================
+  function checkAnswer() {
+    if (isQuestionLocked) return;
+    const item = currentWords[currentIndex];
+    const targetWord = item.word.toLowerCase();
+    const userWord = currentGuess.map(g => g.char).join("");
+
+    if (userWord.length < targetWord.length) {
+      const slotsEl = document.getElementById("slotsContainer");
+      slotsEl.classList.remove("shake");
+      void slotsEl.offsetWidth;
+      slotsEl.classList.add("shake");
+      return;
+    }
+
+    isQuestionLocked = true;
+    const fb = document.getElementById("feedbackBanner");
+    const slots = document.querySelectorAll(".letter-slot");
+    const pointsPerWord = Math.round(100 / currentWords.length);
+
+    if (userWord === targetWord) {
+      playSuccessSound();
+      streak++;
+      correctCount++;
+      score += pointsPerWord;
+      if (currentIndex === currentWords.length - 1 && correctCount === currentWords.length && !hintUsedInCurrent) {
+        score = 100;
+      }
+      document.getElementById("liveScore").textContent = score;
+      document.getElementById("streakBadge").textContent = `🔥 連對 ${streak}`;
+
+      slots.forEach(s => s.classList.add("correct"));
+      fb.textContent = `🎉 答對了！正確拼法：${item.word}`;
+      fb.style.background = "var(--success-bg)";
+      fb.style.color = "#065f46";
+      fb.classList.remove("hidden");
+    } else {
+      playErrorSound();
+      streak = 0;
+      document.getElementById("streakBadge").textContent = `🔥 連對 0`;
+      wrongWordsList.push(`${item.word} (${item.meaning})`);
+
+      slots.forEach(s => s.classList.add("wrong"));
+      fb.textContent = `❌ 拼錯囉！你的拼法：${userWord} ｜ 正確答案：${item.word}`;
+      fb.style.background = "var(--danger-bg)";
+      fb.style.color = "#991b1b";
+      fb.classList.remove("hidden");
+    }
+
+    speakCurrentWord(0.9);
+    renderSlotsAndBank();
+
+    setTimeout(() => {
+      currentIndex++;
+      if (currentIndex < currentWords.length) {
+        loadQuestion();
+      } else {
+        finishGame();
+      }
+    }, 1700);
+  }
+
+  // ==================== 結算與自動回傳成績 ====================
+  function finishGame() {
+    document.getElementById("progressBar").style.width = "100%";
+    document.getElementById("gameCard").classList.add("hidden");
+    document.getElementById("resultCard").classList.remove("hidden");
+
+    const classSeat = document.getElementById("classSeat").value.trim();
+    const studentName = document.getElementById("studentName").value.trim();
+    const totalCount = currentWords.length;
+    const now = new Date();
+    const timestamp = now.toLocaleString("zh-TW", { hour12: false });
+
+    const rawSig = `${classSeat}|${studentName}|${score}|${correctCount}/${totalCount}|${now.getMinutes()}`;
+    let hash = 0;
+    for (let i = 0; i < rawSig.length; i++) {
+      hash = ((hash << 5) - hash) + rawSig.charCodeAt(i);
+      hash |= 0;
+    }
+    const verificationCode = "SP-" + Math.abs(hash).toString(36).toUpperCase().padStart(6, "0");
+
+    latestResultData = {
+      timestamp,
+      classSeat,
+      studentName,
+      topic: currentTopicName,
+      score,
+      correctCount,
+      totalCount,
+      wrongWords: wrongWordsList.length > 0 ? wrongWordsList.join("、") : "無（全數通過）",
+      verificationCode
+    };
+
+    const records = JSON.parse(localStorage.getItem("sp_teacher_records") || "[]");
+    records.unshift(latestResultData);
+    localStorage.setItem("sp_teacher_records", JSON.stringify(records));
+
+    document.getElementById("finalScore").textContent = score;
+    if (score >= 90) {
+      document.getElementById("resultHeadline").textContent = "🏆 太神啦！拼字大師就是你！";
+      launchConfetti();
+    } else if (score >= 70) {
+      document.getElementById("resultHeadline").textContent = "👏 表現很棒，繼續保持！";
+      launchConfetti();
+    } else {
+      document.getElementById("resultHeadline").textContent = "💪 練習完成，把錯題多念幾次會更棒！";
+    }
+
+    const reportText = [
+      `【英語單字拼字測驗成績單】`,
+      `提交時間：${latestResultData.timestamp}`,
+      `班級座號：${latestResultData.classSeat}`,
+      `學生姓名：${latestResultData.studentName}`,
+      `測驗題庫：${latestResultData.topic}`,
+      `測驗得分：${latestResultData.score} 分（答對 ${latestResultData.correctCount} / ${latestResultData.totalCount} 題）`,
+      `待加強單字：${latestResultData.wrongWords}`,
+      `防偽驗證碼：${latestResultData.verificationCode}`
+    ].join("
+");
+
+    document.getElementById("reportPreview").textContent = reportText;
+
+    autoSendToGoogleSheet();
+  }
+
+  async function autoSendToGoogleSheet() {
+    const banner = document.getElementById("autoSyncBanner");
+    const url = document.getElementById("webhookUrl").value.trim() || DEFAULT_WEBHOOK_URL;
+    if (!url || !latestResultData) return;
+
+    banner.style.background = "#e0f2fe";
+    banner.style.color = "#0369a1";
+    banner.textContent = "⏳ 正在將成績自動傳送至老師的 Google 試算表...";
+
+    try {
+      await fetch(url, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(latestResultData)
+      });
+      banner.style.background = "var(--success-bg)";
+      banner.style.color = "#065f46";
+      banner.textContent = "✅ 成績已自動回傳至老師的 Google 試算表！";
+    } catch (err) {
+      banner.style.background = "var(--danger-bg)";
+      banner.style.color = "#991b1b";
+      banner.textContent = "⚠️ 自動傳送連線異常，請點擊下方「手動重新傳送」或複製成績單傳給老師。";
+    }
+  }
+
+  function showToast(msg, isError = false) {
+    const toast = document.getElementById("shareToast");
+    toast.textContent = msg;
+    toast.style.background = isError ? "var(--danger-bg)" : "var(--success-bg)";
+    toast.style.color = isError ? "#991b1b" : "#065f46";
+    toast.classList.remove("hidden");
+  }
+
+  async function sendToWebhook() {
+    const url = document.getElementById("webhookUrl").value.trim() || DEFAULT_WEBHOOK_URL;
+    if (!latestResultData) return;
+
+    try {
+      showToast("⏳ 正在重新傳送成績至雲端試算表...");
+      await fetch(url, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(latestResultData)
+      });
+      showToast("✅ 已成功傳送至老師的 Google 試算表！");
+    } catch (err) {
+      showToast("❌ 傳送失敗，請檢查網路連線或改用複製成績單。", true);
+    }
+  }
+
+  function copyReport() {
+    const text = document.getElementById("reportPreview").textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      showToast("✅ 成績單已複製！可直接貼上 LINE 或 Google Classroom 傳給老師。");
+    }).catch(() => {
+      showToast("⚠️ 瀏覽器不支援自動複製，請手動選取上方文字複製。", true);
+    });
+  }
+
+  function downloadSingleCSV() {
+    if (!latestResultData) return;
+    const headers = ["提交時間", "班級座號", "學生姓名", "測驗題庫", "得分", "答對題數", "總題數", "待加強單字", "防偽驗證碼"];
+    const row = [
+      latestResultData.timestamp,
+      latestResultData.classSeat,
+      latestResultData.studentName,
+      latestResultData.topic,
+      latestResultData.score,
+      latestResultData.correctCount,
+      latestResultData.totalCount,
+      latestResultData.wrongWords,
+      latestResultData.verificationCode
+    ].map(v => `"${String(v).replace(/"/g, '""')}"`).join(",");
+
+    const csvContent = "﻿" + headers.join(",") + "
+" + row;
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `拼字成績_${latestResultData.classSeat}_${latestResultData.studentName}.csv`;
+    link.click();
+  }
+
+  function restartSameTopic() {
+    startGame();
+  }
+
+  function backToSetup() {
+    document.getElementById("resultCard").classList.add("hidden");
+    document.getElementById("gameCard").classList.add("hidden");
+    document.getElementById("setupCard").classList.remove("hidden");
+  }
+
+  // ==================== 老師成績紀錄後台 ====================
+  function renderRecordsTable() {
+    const tbody = document.getElementById("recordsTableBody");
+    const records = JSON.parse(localStorage.getItem("sp_teacher_records") || "[]");
+    if (records.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; color:var(--muted); padding:24px;">目前尚無測驗紀錄</td></tr>`;
+      return;
+    }
+    tbody.innerHTML = records.map(r => `
+      <tr>
+        <td>${r.timestamp}</td>
+        <td><strong>${r.classSeat}</strong></td>
+        <td>${r.studentName}</td>
+        <td>${r.topic}</td>
+        <td><span class="badge ${r.score >= 80 ? 'badge-success' : 'badge-warning'}">${r.score} 分</span></td>
+        <td>${r.correctCount}/${r.totalCount}</td>
+        <td>${r.wrongWords}</td>
+        <td style="font-family:monospace;">${r.verificationCode}</td>
+      </tr>
+    `).join("");
+  }
+
+  function exportAllCSV() {
+    const records = JSON.parse(localStorage.getItem("sp_teacher_records") || "[]");
+    if (records.length === 0) {
+      alert("目前沒有任何成績紀錄可匯出！");
+      return;
+    }
+    const headers = ["提交時間", "班級座號", "學生姓名", "測驗題庫", "得分", "答對題數", "總題數", "待加強單字", "防偽驗證碼"];
+    const rows = records.map(r => [
+      r.timestamp, r.classSeat, r.studentName, r.topic, r.score,
+      r.correctCount, r.totalCount, r.wrongWords, r.verificationCode
+    ].map(v => `"${String(v).replace(/"/g, '""')}"`).join(","));
+
+    const csvContent = "﻿" + headers.join(",") + "
+" + rows.join("
+");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `全班英語拼字成績總表_${new Date().toISOString().slice(0,10)}.csv`;
+    link.click();
+  }
+
+  function clearAllRecords() {
+    if (confirm("確定要清空此裝置上的所有本地成績紀錄嗎？（不會影響已寫入 Google 試算表的資料）")) {
+      localStorage.removeItem("sp_teacher_records");
+      renderRecordsTable();
+    }
+  }
+
+  // ==================== 慶祝彩帶特效 ====================
+  function launchConfetti() {
+    const canvas = document.getElementById("confettiCanvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const colors = ["#4f46e5", "#0ea5e9", "#10b981", "#f59e0b", "#ec4899"];
+    const pieces = Array.from({ length: 85 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height - canvas.height,
+      w: Math.random() * 10 + 5,
+      h: Math.random() * 6 + 4,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      vy: Math.random() * 3 + 2,
+      vx: Math.random() * 2 - 1,
+      rot: Math.random() * 360
+    }));
+
+    let frame = 0;
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pieces.forEach(p => {
+        p.y += p.vy;
+        p.x += p.vx;
+        p.rot += 4;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rot * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+      });
+      frame++;
+      if (frame < 150) requestAnimationFrame(draw);
+      else ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    draw();
+  }
+</script>
+</body>
+</html>
