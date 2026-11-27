@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>低年級英語認單字大挑戰 | 10月 &amp; 11月主題測驗</title>
+  <style>
+    :root {
+      --primary: #f97316;
+      --primary-dark: #ea580c;
+      --primary-light: #ffedd5;
+      --secondary: #0ea5e9;
+      --success: #10b981;
+      --success-bg: #d1fae5;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --danger-bg: #fee2e2;
+      --bg: #fffbeb;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #fed7aa;
+      --shadow: 0 10px 25px -5px rgba(234, 88, 12, 0.1), 0 8px 10px -6px rgba(234, 88, 12, 0.05);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #fff7ed 0%, #fefce8 50%, #f0f9ff 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--card);
+      padding: 14px 22px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+      border: 2px solid var(--border);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 46px;
+      height: 46px;
+      background: linear-gradient(135deg, #fb923c, #f97316);
+      color: white;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 900;
+      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.35);
+    }
+
+    .brand h1 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .brand p {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 9px 15px;
+      border-radius: 12px;
+      border: 1.5px solid #e2e8f0;
+      background: #f8fafc;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      border: 2px solid var(--border);
+      margin-bottom: 20px;
+      animation: fadeIn 0.35s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Form Elements */
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    input[type="text"],
+    input[type="url"],
+    select {
+      width: 100%;
+      padding: 13px 15px;
+      border-radius: 14px;
+      border: 2px solid #e2e8f0;
+      font-size: 1.05rem;
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background: #fff;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-light);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 20px;
+      border-radius: 14px;
+      border: none;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #fb923c, var(--primary));
+      color: white;
+      box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    }
+
+    .btn-secondary {
+      background: #f1f5f9;
+      color: #334155;
+      border: 1.5px solid #cbd5e1;
+    }
+
+    .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+    }
+
+    .btn-danger {
+      background: var(--danger-bg);
+      color: var(--danger);
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+    /* Game Screen */
+    .game-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--muted);
+    }
+
+    .badge {
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 800;
+    }
+
+    .badge-primary { background: var(--primary-light); color: var(--primary-dark); }
+    .badge-success { background: var(--success-bg); color: #065f46; }
+    .badge-warning { background: #fef3c7; color: #92400e; }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 12px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #fb923c, #f59e0b);
+      width: 0%;
+      transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* Big Word Prompt Box for Lower Grades */
+    .prompt-box {
+      text-align: center;
+      padding: 26px 20px;
+      background: #fffaf5;
+      border-radius: 20px;
+      border: 2.5px dashed #fdba74;
+      margin-bottom: 24px;
+    }
+
+    .prompt-sub {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+    }
+
+    .english-target-word {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: #0f172a;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      word-break: break-word;
+    }
+
+    @media (max-width: 500px) {
+      .english-target-word { font-size: 2.2rem; }
+    }
+
+    .audio-controls {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .audio-btn {
+      background: white;
+      border: 2px solid var(--primary);
+      color: var(--primary-dark);
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      box-shadow: 0 2px 6px rgba(249, 115, 22, 0.15);
+    }
+
+    .audio-btn:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* 4 Big Choice Cards */
+    .choices-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 560px) {
+      .choices-grid { grid-template-columns: 1fr; }
+    }
+
+    .choice-card {
+      background: #ffffff;
+      border: 2.5px solid #cbd5e1;
+      border-bottom-width: 5px;
+      border-radius: 18px;
+      padding: 18px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+      text-align: left;
+      font-family: inherit;
+    }
+
+    .choice-card:hover:not(:disabled) {
+      border-color: var(--primary);
+      background: #fff7ed;
+      transform: translateY(-3px);
+    }
+
+    .choice-card:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    .choice-card:disabled {
+      cursor: default;
+    }
+
+    .choice-emoji {
+      font-size: 2.2rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .choice-text {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .choice-card.correct {
+      background: var(--success-bg);
+      border-color: var(--success);
+      animation: bounce 0.45s ease;
+    }
+
+    .choice-card.correct .choice-text {
+      color: #065f46;
+    }
+
+    .choice-card.wrong {
+      background: var(--danger-bg);
+      border-color: var(--danger);
+      animation: shake 0.4s ease;
+    }
+
+    .choice-card.wrong .choice-text {
+      color: #991b1b;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-8px); }
+      70% { transform: translateY(-3px); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+
+    .feedback-banner {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 14px;
+      text-align: center;
+      font-weight: 800;
+      font-size: 1.15rem;
+    }
+
+    /* Result Screen */
+    .score-circle {
+      width: 135px;
+      height: 135px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #fb923c, var(--primary));
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      box-shadow: 0 10px 25px rgba(249, 115, 22, 0.35);
+    }
+
+    .score-num {
+      font-size: 2.6rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .score-label {
+      font-size: 0.9rem;
+      opacity: 0.95;
+      margin-top: 4px;
+      font-weight: 700;
+    }
+
+    .report-preview {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 16px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      color: #334155;
+      margin-bottom: 18px;
+    }
+
+    .share-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .status-toast {
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    /* Teacher Dashboard Table */
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 12px;
+    }
+
+    table.records-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    table.records-table th, table.records-table td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    table.records-table th {
+      background: #fff7ed;
+      font-weight: 700;
+      color: #9a3412;
+    }
+
+    .confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+<div class="app-container">
+  <header>
+    <div class="brand">
+      <div class="brand-icon">🌟</div>
+      <div>
+        <h1>低年級英語認單字大挑戰</h1>
+        <p>聽發音、看英文、選中文（10月 &amp; 11月主題）</p>
+      </div>
+    </div>
+    <div class="nav-tabs">
+      <button type="button" class="tab-btn active" id="tabStudent" onclick="switchTab('student')">🎮 開始認字</button>
+      <button type="button" class="tab-btn" id="tabTeacher" onclick="switchTab('teacher')">📊 成績紀錄</button>
+    </div>
+  </header>
+
+  <!-- ==================== 1. 學生認字頁面 ==================== -->
+  <div id="studentSection">
+    <!-- 開始設定畫面 -->
+    <div class="card" id="setupCard">
+      <div class="section-title">👋 小朋友，請輸入你的班級和名字！</div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label for="classSeat">班級座號 <span style="color:var(--danger)">*</span></label>
+          <input type="text" id="classSeat" placeholder="例如：102-05" required />
+        </div>
+        <div class="form-group">
+          <label for="studentName">學生姓名 <span style="color:var(--danger)">*</span></label>
+          <input type="text" id="studentName" placeholder="請輸入名字" required />
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label for="topicSelect">選擇單字主題</label>
+          <select id="topicSelect">
+            <option value="oct">10月（共 14 題）</option>
+            <option value="nov">11月（共 16 題）</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="accentSelect">語音發音口音</label>
+          <select id="accentSelect">
+            <option value="en-US">美式英語 (US English)</option>
+            <option value="en-GB">英式英語 (UK English)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 隱藏的老師接收設定（已內建您的 Google Apps Script Webhook 網址） -->
+      <div style="display: none;" aria-hidden="true">
+        <input type="url" id="webhookUrl" value="https://script.google.com/macros/s/AKfycbz5h7fLyVc49v0gHcUIGFHRPDQ4LJA37t4B3uL_M3T80Efrd3wwshOuvG3DC6vnHotUQg/exec" />
+      </div>
+
+      <button type="button" class="btn btn-primary btn-full" onclick="startGame()" style="margin-top: 8px; font-size: 1.15rem; padding: 16px;">
+        🚀 開始認單字闖關
+      </button>
+    </div>
+
+    <!-- 遊戲作答畫面（四選一認字） -->
+    <div class="card hidden" id="gameCard">
+      <div class="game-header">
+        <div>
+          <span class="badge badge-primary" id="progressText">第 1 / 14 題</span>
+          <span class="badge badge-warning" id="streakBadge" style="margin-left:6px;">🔥 連對 0</span>
+        </div>
+        <div>
+          得分：<span id="liveScore" style="color:var(--primary-dark); font-size:1.25rem;">0</span> 分
+        </div>
+      </div>
+
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressBar"></div>
+      </div>
+
+      <div class="prompt-box">
+        <div class="prompt-sub">👀 聽一聽、看一看，這個單字是什麼意思呢？</div>
+        <div class="english-target-word" id="englishWordText">Cloudy</div>
+        <div class="audio-controls">
+          <button type="button" class="audio-btn" onclick="speakCurrentWord(0.9)">🔊 再聽一次</button>
+          <button type="button" class="audio-btn" onclick="speakCurrentWord(0.55)">🐢 慢慢念</button>
+        </div>
+      </div>
+
+      <!-- 四選一選項區 -->
+      <div class="choices-grid" id="choicesContainer"></div>
+
+      <div class="feedback-banner hidden" id="feedbackBanner"></div>
+    </div>
+
+    <!-- 結算與成績回傳畫面 -->
+    <div class="card hidden" id="resultCard">
+      <div style="text-align: center; margin-bottom: 18px;">
+        <div class="score-circle">
+          <div class="score-num" id="finalScore">100</div>
+          <div class="score-label">總得分</div>
+        </div>
+        <h2 style="font-size: 1.45rem; margin-bottom: 4px;" id="resultHeadline">太棒了，闖關成功！</h2>
+        <p style="color: var(--muted); font-size: 0.95rem;" id="resultSubtext">成績已自動儲存，系統正在傳送給老師</p>
+      </div>
+
+      <!-- 自動雲端同步狀態提示 -->
+      <div id="autoSyncBanner" class="status-toast" style="background: #e0f2fe; color: #0369a1; margin-bottom: 16px;">
+        ⏳ 正在將成績自動傳送至老師的 Google 試算表...
+      </div>
+
+      <div class="section-title">📋 成績單明細</div>
+      <div class="report-preview" id="reportPreview"></div>
+
+      <div class="share-grid">
+        <button type="button" class="btn btn-success" id="btnSendWebhook" onclick="sendToWebhook()">☁️ 手動重新傳送至試算表</button>
+        <button type="button" class="btn btn-primary" onclick="copyReport()">📋 複製成績單 (貼給 LINE)</button>
+        <button type="button" class="btn btn-secondary" onclick="downloadSingleCSV()">📥 下載成績 CSV 檔</button>
+      </div>
+
+      <div id="shareToast" class="status-toast hidden"></div>
+
+      <div style="margin-top: 20px; display: flex; gap: 10px;">
+        <button type="button" class="btn btn-secondary btn-full" onclick="restartSameTopic()">🔁 再玩一次</button>
+        <button type="button" class="btn btn-secondary btn-full" onclick="backToSetup()">🏠 換另一個主題</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 2. 老師成績紀錄後台 ==================== -->
+  <div id="teacherSection" class="hidden">
+    <div class="card">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:16px;">
+        <div class="section-title" style="margin-bottom:0;">📊 本機裝置成績紀錄總表</div>
+        <div style="display:flex; gap:8px;">
+          <button type="button" class="btn btn-success" onclick="exportAllCSV()">📥 匯出全部成績 (CSV)</button>
+          <button type="button" class="btn btn-danger" onclick="clearAllRecords()">🗑️ 清空紀錄</button>
+        </div>
+      </div>
+      <p style="font-size:0.85rem; color:var(--muted); margin-bottom:12px;">
+        此頁面會彙整在此瀏覽器上完成的所有學生認字測驗紀錄；同時每筆成績亦會自動寫入您的 Google 試算表。
+      </p>
+      <div class="table-wrap">
+        <table class="records-table">
+          <thead>
+            <tr>
+              <th>提交時間</th>
+              <th>班級座號</th>
+              <th>姓名</th>
+              <th>主題</th>
+              <th>得分</th>
+              <th>答對</th>
+              <th>待加強單字</th>
+              <th>驗證碼</th>
+            </tr>
+          </thead>
+          <tbody id="recordsTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ==================== 內建預設 Webhook 網址 ====================
+  const DEFAULT_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbz5h7fLyVc49v0gHcUIGFHRPDQ4LJA37t4B3uL_M3T80Efrd3wwshOuvG3DC6vnHotUQg/exec";
+
+  // ==================== 10月 & 11月 低年級認字題庫（附圖示輔助理解） ====================
+  const WORD_BANKS = {
+    oct: {
+      name: "10月（認單字）",
+      words: [
+        { word: "Cloudy", meaning: "多雲的 / 陰天的", emoji: "☁️" },
+        { word: "Eraser", meaning: "橡皮擦", emoji: "🧽" },
+        { word: "Write", meaning: "寫字", emoji: "✍️" },
+        { word: "Umbrella", meaning: "雨傘", emoji: "☂️" },
+        { word: "Ice Cream", meaning: "冰淇淋", emoji: "🍦" },
+        { word: "Backpack", meaning: "後背包 / 書包", emoji: "🎒" },
+        { word: "Taro", meaning: "芋頭", emoji: "🍠" },
+        { word: "Chocolate", meaning: "巧克力", emoji: "🍫" },
+        { word: "Dessert", meaning: "甜點", emoji: "🍮" },
+        { word: "Pomelo", meaning: "柚子", emoji: "🍈" },
+        { word: "Cake", meaning: "蛋糕", emoji: "🎂" },
+        { word: "Moon Cake", meaning: "月餅", emoji: "🥮" },
+        { word: "Apple", meaning: "蘋果", emoji: "🍎" },
+        { word: "Kite", meaning: "風箏", emoji: "🪁" }
+      ]
+    },
+    nov: {
+      name: "11月（認單字）",
+      words: [
+        { word: "Monster", meaning: "怪物 / 怪獸", emoji: "👾" },
+        { word: "Vampire", meaning: "吸血鬼", emoji: "🧛" },
+        { word: "Skeleton", meaning: "骷髏", emoji: "💀" },
+        { word: "Ghost", meaning: "鬼魂 / 幽靈", emoji: "👻" },
+        { word: "Zombie", meaning: "殭屍", emoji: "🧟" },
+        { word: "Werewolf", meaning: "狼人", emoji: "🐺" },
+        { word: "Cat", meaning: "貓咪", emoji: "🐱" },
+        { word: "Bear", meaning: "熊", emoji: "🐻" },
+        { word: "Key", meaning: "鑰匙", emoji: "🔑" },
+        { word: "Lion", meaning: "獅子", emoji: "🦁" },
+        { word: "Tiger", meaning: "老虎", emoji: "🐯" },
+        { word: "Zebra", meaning: "斑馬", emoji: "🦓" },
+        { word: "Octopus", meaning: "章魚", emoji: "🐙" },
+        { word: "Turtle", meaning: "烏龜", emoji: "🐢" },
+        { word: "Rabbit", meaning: "兔子", emoji: "🐰" },
+        { word: "Ox", meaning: "公牛 / 牛", emoji: "🐂" }
+      ]
+    }
+  };
+
+  // ==================== 遊戲狀態變數 ====================
+  let currentWords = [];
+  let allPoolWords = [];
+  let currentTopicName = "";
+  let currentIndex = 0;
+  let score = 0;
+  let streak = 0;
+  let correctCount = 0;
+  let wrongWordsList = [];
+  let isQuestionLocked = false;
+  let latestResultData = null;
+
+  // ==================== 音效合成器 (Web Audio API) ====================
+  let audioCtx = null;
+
+  function playTone(freq, type = "sine", duration = 0.14, delay = 0) {
+    try {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) audioCtx = new AudioContextClass();
+      }
+      if (!audioCtx) return;
+      if (audioCtx.state === "suspended") audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime + delay);
+      gain.gain.setValueAtTime(0.16, audioCtx.currentTime + delay);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + delay + duration);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(audioCtx.currentTime + delay);
+      osc.stop(audioCtx.currentTime + delay + duration);
+    } catch (e) {}
+  }
+
+  function playSuccessSound() {
+    playTone(523.25, "sine", 0.14, 0);
+    playTone(659.25, "sine", 0.14, 0.1);
+    playTone(783.99, "sine", 0.25, 0.2);
+  }
+
+  function playErrorSound() {
+    playTone(240, "triangle", 0.18, 0);
+    playTone(190, "triangle", 0.25, 0.15);
+  }
+
+  // ==================== 初始化 ====================
+  function initApp() {
+    try {
+      const savedClass = localStorage.getItem("sp_classSeat");
+      const savedName = localStorage.getItem("sp_studentName");
+      if (savedClass) document.getElementById("classSeat").value = savedClass;
+      if (savedName) document.getElementById("studentName").value = savedName;
+    } catch (e) {}
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initApp);
+  } else {
+    initApp();
+  }
+
+  function escapeHtml(str) {
+    return String(str || "")
+      .replace(/&/g, "&amp;")
+      .replace(/"/g, "&quot;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
+  // ==================== 分頁切換 ====================
+  function switchTab(tab) {
+    document.getElementById("tabStudent").classList.toggle("active", tab === "student");
+    document.getElementById("tabTeacher").classList.toggle("active", tab === "teacher");
+
+    document.getElementById("studentSection").classList.toggle("hidden", tab !== "student");
+    document.getElementById("teacherSection").classList.toggle("hidden", tab !== "teacher");
+
+    if (tab === "teacher") renderRecordsTable();
+  }
+
+  // ==================== 開始遊戲 ====================
+  function startGame() {
+    const classSeat = document.getElementById("classSeat").value.trim();
+    const studentName = document.getElementById("studentName").value.trim();
+
+    if (!classSeat || !studentName) {
+      alert("小朋友，請先填寫「班級座號」和「學生姓名」喔！");
+      return;
+    }
+
+    try {
+      localStorage.setItem("sp_classSeat", classSeat);
+      localStorage.setItem("sp_studentName", studentName);
+    } catch (e) {}
+
+    const topicKey = document.getElementById("topicSelect").value;
+    const bank = WORD_BANKS[topicKey] || WORD_BANKS.oct;
+
+    currentWords = shuffleArray([...bank.words]);
+    // 誘答選項池包含同主題單字（足夠產生 3 個不重複的干擾選項）
+    allPoolWords = [...bank.words];
+    currentTopicName = bank.name;
+    currentIndex = 0;
+    score = 0;
+    streak = 0;
+    correctCount = 0;
+    wrongWordsList = [];
+
+    document.getElementById("setupCard").classList.add("hidden");
+    document.getElementById("resultCard").classList.add("hidden");
+    document.getElementById("gameCard").classList.remove("hidden");
+
+    loadQuestion();
+  }
+
+  function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  // ==================== 載入題目與四選一選項 ====================
+  function loadQuestion() {
+    isQuestionLocked = false;
+    const item = currentWords[currentIndex];
+    const total = currentWords.length;
+
+    document.getElementById("progressText").textContent = "第 " + (currentIndex + 1) + " / " + total + " 題";
+    document.getElementById("streakBadge").textContent = "🔥 連對 " + streak;
+    document.getElementById("liveScore").textContent = score;
+    document.getElementById("progressBar").style.width = ((currentIndex / total) * 100) + "%";
+
+    document.getElementById("englishWordText").textContent = item.word;
+
+    const fb = document.getElementById("feedbackBanner");
+    fb.classList.add("hidden");
+    fb.className = "feedback-banner hidden";
+
+    // 從同主題題庫選出 3 個不同的干擾選項
+    const distractors = shuffleArray(
+      allPoolWords.filter(w => w.word !== item.word)
+    ).slice(0, 3);
+
+    const options = shuffleArray([item, ...distractors]);
+    const container = document.getElementById("choicesContainer");
+    container.innerHTML = "";
+
+    options.forEach(opt => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "choice-card";
+      btn.dataset.word = opt.word;
+      btn.innerHTML =
+        '<span class="choice-emoji">' + opt.emoji + '</span>' +
+        '<span class="choice-text">' + escapeHtml(opt.meaning) + '</span>';
+      btn.onclick = () => selectChoice(btn, opt, item);
+      container.appendChild(btn);
+    });
+
+    // 自動唸出英文單字
+    setTimeout(() => speakCurrentWord(0.9), 300);
+  }
+
+  function speakCurrentWord(rate = 0.9) {
+    if (!("speechSynthesis" in window)) return;
+    window.speechSynthesis.cancel();
+    const item = currentWords[currentIndex];
+    const utter = new SpeechSynthesisUtterance(item.word);
+    utter.lang = document.getElementById("accentSelect").value || "en-US";
+    utter.rate = rate;
+    window.speechSynthesis.speak(utter);
+  }
+
+  // ==================== 檢查選擇題答案 ====================
+  function selectChoice(clickedBtn, selectedOpt, correctItem) {
+    if (isQuestionLocked) return;
+    isQuestionLocked = true;
+
+    const allBtns = document.querySelectorAll(".choice-card");
+    allBtns.forEach(b => (b.disabled = true));
+
+    const fb = document.getElementById("feedbackBanner");
+    const pointsPerWord = Math.round(100 / currentWords.length);
+
+    if (selectedOpt.word === correctItem.word) {
+      playSuccessSound();
+      streak++;
+      correctCount++;
+      score += pointsPerWord;
+      if (currentIndex === currentWords.length - 1 && correctCount === currentWords.length) {
+        score = 100;
+      }
+      document.getElementById("liveScore").textContent = score;
+      document.getElementById("streakBadge").textContent = "🔥 連對 " + streak;
+
+      clickedBtn.classList.add("correct");
+      fb.textContent = "🎉 答對了！ " + correctItem.word + " 就是「" + correctItem.meaning + "」" + correctItem.emoji;
+      fb.style.background = "var(--success-bg)";
+      fb.style.color = "#065f46";
+      fb.classList.remove("hidden");
+    } else {
+      playErrorSound();
+      streak = 0;
+      document.getElementById("streakBadge").textContent = "🔥 連對 0";
+      wrongWordsList.push(correctItem.word + " (" + correctItem.meaning + ")");
+
+      clickedBtn.classList.add("wrong");
+      // 標示出正確答案讓小朋友學習
+      allBtns.forEach(b => {
+        if (b.dataset.word === correctItem.word) {
+          b.classList.add("correct");
+        }
+      });
+
+      fb.textContent = "💡 沒關係再記一次！ " + correctItem.word + " 是「" + correctItem.meaning + "」" + correctItem.emoji;
+      fb.style.background = "var(--danger-bg)";
+      fb.style.color = "#991b1b";
+      fb.classList.remove("hidden");
+    }
+
+    speakCurrentWord(0.88);
+
+    setTimeout(() => {
+      currentIndex++;
+      if (currentIndex < currentWords.length) {
+        loadQuestion();
+      } else {
+        finishGame();
+      }
+    }, 1600);
+  }
+
+  // ==================== 結算與自動回傳成績 ====================
+  function finishGame() {
+    document.getElementById("progressBar").style.width = "100%";
+    document.getElementById("gameCard").classList.add("hidden");
+    document.getElementById("resultCard").classList.remove("hidden");
+
+    const classSeat = document.getElementById("classSeat").value.trim();
+    const studentName = document.getElementById("studentName").value.trim();
+    const totalCount = currentWords.length;
+    const now = new Date();
+    const timestamp = now.toLocaleString("zh-TW", { hour12: false });
+
+    const rawSig = classSeat + "|" + studentName + "|" + score + "|" + correctCount + "/" + totalCount + "|" + now.getMinutes();
+    let hash = 0;
+    for (let i = 0; i < rawSig.length; i++) {
+      hash = ((hash << 5) - hash) + rawSig.charCodeAt(i);
+      hash |= 0;
+    }
+    const verificationCode = "RD-" + Math.abs(hash).toString(36).toUpperCase().padStart(6, "0");
+
+    latestResultData = {
+      timestamp: timestamp,
+      classSeat: classSeat,
+      studentName: studentName,
+      topic: currentTopicName,
+      score: score,
+      correctCount: correctCount,
+      totalCount: totalCount,
+      wrongWords: wrongWordsList.length > 0 ? wrongWordsList.join("、") : "無（全數答對）",
+      verificationCode: verificationCode
+    };
+
+    try {
+      const records = JSON.parse(localStorage.getItem("sp_teacher_records") || "[]");
+      records.unshift(latestResultData);
+      localStorage.setItem("sp_teacher_records", JSON.stringify(records));
+    } catch (e) {}
+
+    document.getElementById("finalScore").textContent = score;
+    if (score >= 90) {
+      document.getElementById("resultHeadline").textContent = "🏆 太厲害啦！你是認單字小達人！";
+      launchConfetti();
+    } else if (score >= 70) {
+      document.getElementById("resultHeadline").textContent = "👏 表現很棒喔！繼續加油！";
+      launchConfetti();
+    } else {
+      document.getElementById("resultHeadline").textContent = "💪 練習完成！再多玩一次會更熟練喔！";
+    }
+
+    const reportText = [
+      "【低年級英語認單字測驗成績單】",
+      "提交時間：" + latestResultData.timestamp,
+      "班級座號：" + latestResultData.classSeat,
+      "學生姓名：" + latestResultData.studentName,
+      "測驗主題：" + latestResultData.topic,
+      "測驗得分：" + latestResultData.score + " 分（答對 " + latestResultData.correctCount + " / " + latestResultData.totalCount + " 題）",
+      "待加強單字：" + latestResultData.wrongWords,
+      "防偽驗證碼：" + latestResultData.verificationCode
+    ].join("\n");
+
+    document.getElementById("reportPreview").textContent = reportText;
+
+    autoSendToGoogleSheet();
+  }
+
+  async function autoSendToGoogleSheet() {
+    const banner = document.getElementById("autoSyncBanner");
+    const url = document.getElementById("webhookUrl").value.trim() || DEFAULT_WEBHOOK_URL;
+    if (!url || !latestResultData) return;
+
+    banner.style.background = "#e0f2fe";
+    banner.style.color = "#0369a1";
+    banner.textContent = "⏳ 正在將成績自動傳送至老師的 Google 試算表...";
+
+    try {
+      await fetch(url, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(latestResultData)
+      });
+      banner.style.background = "var(--success-bg)";
+      banner.style.color = "#065f46";
+      banner.textContent = "✅ 成績已自動回傳給老師囉！";
+    } catch (err) {
+      banner.style.background = "var(--danger-bg)";
+      banner.style.color = "#991b1b";
+      banner.textContent = "⚠️ 自動傳送連線異常，請點擊下方「手動重新傳送」或複製成績單傳給老師。";
+    }
+  }
+
+  function showToast(msg, isError = false) {
+    const toast = document.getElementById("shareToast");
+    toast.textContent = msg;
+    toast.style.background = isError ? "var(--danger-bg)" : "var(--success-bg)";
+    toast.style.color = isError ? "#991b1b" : "#065f46";
+    toast.classList.remove("hidden");
+  }
+
+  async function sendToWebhook() {
+    const url = document.getElementById("webhookUrl").value.trim() || DEFAULT_WEBHOOK_URL;
+    if (!latestResultData) return;
+
+    try {
+      showToast("⏳ 正在重新傳送成績至雲端試算表...");
+      await fetch(url, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(latestResultData)
+      });
+      showToast("✅ 已成功傳送至老師的 Google 試算表！");
+    } catch (err) {
+      showToast("❌ 傳送失敗，請檢查網路連線或改用複製成績單。", true);
+    }
+  }
+
+  function copyReport() {
+    const text = document.getElementById("reportPreview").textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      showToast("✅ 成績單已複製！可直接貼上 LINE 傳給老師。");
+    }).catch(() => {
+      showToast("⚠️ 瀏覽器不支援自動複製，請手動選取上方文字複製。", true);
+    });
+  }
+
+  function downloadSingleCSV() {
+    if (!latestResultData) return;
+    const headers = ["提交時間", "班級座號", "學生姓名", "測驗主題", "得分", "答對題數", "總題數", "待加強單字", "防偽驗證碼"];
+    const row = [
+      latestResultData.timestamp,
+      latestResultData.classSeat,
+      latestResultData.studentName,
+      latestResultData.topic,
+      latestResultData.score,
+      latestResultData.correctCount,
+      latestResultData.totalCount,
+      latestResultData.wrongWords,
+      latestResultData.verificationCode
+    ].map(v => '"' + String(v).replace(/"/g, '""') + '"').join(",");
+
+    const csvContent = "\uFEFF" + headers.join(",") + "\n" + row;
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "認字成績_" + latestResultData.classSeat + "_" + latestResultData.studentName + ".csv";
+    link.click();
+  }
+
+  function restartSameTopic() {
+    startGame();
+  }
+
+  function backToSetup() {
+    document.getElementById("resultCard").classList.add("hidden");
+    document.getElementById("gameCard").classList.add("hidden");
+    document.getElementById("setupCard").classList.remove("hidden");
+  }
+
+  // ==================== 老師成績紀錄後台 ====================
+  function renderRecordsTable() {
+    const tbody = document.getElementById("recordsTableBody");
+    let records = [];
+    try {
+      records = JSON.parse(localStorage.getItem("sp_teacher_records") || "[]");
+    } catch (e) {}
+    if (records.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; color:var(--muted); padding:24px;">目前尚無測驗紀錄</td></tr>';
+      return;
+    }
+    tbody.innerHTML = records.map(r =>
+      '<tr>' +
+      '<td>' + escapeHtml(r.timestamp) + '</td>' +
+      '<td><strong>' + escapeHtml(r.classSeat) + '</strong></td>' +
+      '<td>' + escapeHtml(r.studentName) + '</td>' +
+      '<td>' + escapeHtml(r.topic) + '</td>' +
+      '<td><span class="badge ' + (r.score >= 80 ? 'badge-success' : 'badge-warning') + '">' + r.score + ' 分</span></td>' +
+      '<td>' + r.correctCount + '/' + r.totalCount + '</td>' +
+      '<td>' + escapeHtml(r.wrongWords) + '</td>' +
+      '<td style="font-family:monospace;">' + escapeHtml(r.verificationCode) + '</td>' +
+      '</tr>'
+    ).join("");
+  }
+
+  function exportAllCSV() {
+    let records = [];
+    try {
+      records = JSON.parse(localStorage.getItem("sp_teacher_records") || "[]");
+    } catch (e) {}
+    if (records.length === 0) {
+      alert("目前沒有任何成績紀錄可匯出！");
+      return;
+    }
+    const headers = ["提交時間", "班級座號", "學生姓名", "測驗主題", "得分", "答對題數", "總題數", "待加強單字", "防偽驗證碼"];
+    const rows = records.map(r => [
+      r.timestamp, r.classSeat, r.studentName, r.topic, r.score,
+      r.correctCount, r.totalCount, r.wrongWords, r.verificationCode
+    ].map(v => '"' + String(v).replace(/"/g, '""') + '"').join(","));
+
+    const csvContent = "\uFEFF" + headers.join(",") + "\n" + rows.join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "全班英語認單字成績總表_" + new Date().toISOString().slice(0,10) + ".csv";
+    link.click();
+  }
+
+  function clearAllRecords() {
+    if (confirm("確定要清空此裝置上的所有本地成績紀錄嗎？（不會影響已寫入 Google 試算表的資料）")) {
+      localStorage.removeItem("sp_teacher_records");
+      renderRecordsTable();
+    }
+  }
+
+  // ==================== 慶祝彩帶特效 ====================
+  function launchConfetti() {
+    const canvas = document.getElementById("confettiCanvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const colors = ["#f97316", "#0ea5e9", "#10b981", "#f59e0b", "#ec4899"];
+    const pieces = Array.from({ length: 85 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height - canvas.height,
+      w: Math.random() * 10 + 5,
+      h: Math.random() * 6 + 4,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      vy: Math.random() * 3 + 2,
+      vx: Math.random() * 2 - 1,
+      rot: Math.random() * 360
+    }));
+
+    let frame = 0;
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pieces.forEach(p => {
+        p.y += p.vy;
+        p.x += p.vx;
+        p.rot += 4;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rot * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+      });
+      frame++;
+      if (frame < 150) requestAnimationFrame(draw);
+      else ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    draw();
+  }
+</script>
+</body>
+</html>
